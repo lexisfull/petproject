@@ -25,10 +25,10 @@ public class PersonController {
         return personService.getPersonById(id);
     }
 
-    @GetMapping
-    public Person getPersonById2(@RequestParam Integer id){
-        return personService.getPersonById(id);
-    }
+//    @GetMapping
+//    public Person getPersonById2(@RequestParam Integer id){
+//        return personService.getPersonById(id);
+//    }
 
     @PostMapping
     public void addPerson(@RequestBody Person person){

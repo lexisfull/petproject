@@ -2,6 +2,8 @@ package com.example.petproject.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Person")
 public class Person {
@@ -16,6 +18,9 @@ public class Person {
 
     @Column(name = "age")
     private int age;
+
+    @ManyToMany(mappedBy = "persons")
+    private List<Executor> executors;
 
     public Person(String name, int age) {
         this.name = name;
@@ -44,5 +49,22 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public List<Executor> getExecutors() {
+        return executors;
+    }
+
+    public void setExecutors(List<Executor> executors) {
+        this.executors = executors;
+    }
+
+    @Override
+    public String toString() {
+        return "Person {" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

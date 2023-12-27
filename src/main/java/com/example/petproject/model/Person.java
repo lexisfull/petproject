@@ -1,11 +1,15 @@
 package com.example.petproject.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
 @Table(name = "Person")
+@Getter
+@Setter
 public class Person {
 
     @Id
@@ -25,38 +29,6 @@ public class Person {
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public List<Executor> getExecutors() {
-        return executors;
-    }
-
-    public void setExecutors(List<Executor> executors) {
-        this.executors = executors;
     }
 
     @Override

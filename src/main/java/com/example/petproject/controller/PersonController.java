@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Рестконтроллер на который юудет обращаться клиент
+ * Рестконтроллер на который будет обращаться клиент
  */
 @RequestMapping("/persons")
 @RestController
@@ -34,4 +34,9 @@ public class PersonController {
     public void addPerson(@RequestBody Person person){
         personService.savePerson(person);
     }
+    @DeleteMapping("/{id}")
+    public void deletePerson(@PathVariable("id") Integer id){
+        personService.deleteByPerson(id);
+    }
+
 }

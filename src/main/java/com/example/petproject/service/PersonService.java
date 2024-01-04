@@ -28,4 +28,9 @@ public class PersonService {
     public List<Person> getListPersonByAge(int age){
         return personRepository.findAllByAge(age);
     }
+
+
+    public void deleteByPerson(Integer id){
+        personRepository.deleteById(id);
+    }
 }

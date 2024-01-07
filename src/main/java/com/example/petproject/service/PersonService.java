@@ -2,6 +2,7 @@ package com.example.petproject.service;
 
 import com.example.petproject.dao.PersonRepository;
 import com.example.petproject.model.Person;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class PersonService {
-    @Autowired
-    private PersonRepository personRepository;
+
+    private final PersonRepository personRepository;
     public List<Person> getPersons(){
         return personRepository.findAll();
     }

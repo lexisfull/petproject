@@ -16,6 +16,7 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
+
     @GetMapping
     public List<Person> getPearson(){
         return personService.getPersons();
@@ -25,15 +26,12 @@ public class PersonController {
         return personService.getPersonById(id);
     }
 
-//    @GetMapping
-//    public Person getPersonById2(@RequestParam Integer id){
-//        return personService.getPersonById(id);
-//    }
 
     @PostMapping
     public void addPerson(@RequestBody Person person){
         personService.savePerson(person);
     }
+
     @DeleteMapping("/{id}")
     public void deletePerson(@PathVariable("id") Integer id){
         personService.deleteByPerson(id);

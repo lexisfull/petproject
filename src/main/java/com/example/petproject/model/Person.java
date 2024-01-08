@@ -1,15 +1,16 @@
 package com.example.petproject.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "Person")
-@Getter
-@Setter
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Person {
 
     @Id
@@ -17,26 +18,23 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "age")
     private int age;
 
+    @Column(name = "height")
+    private int height;
+
+    @Column(name = "weight")
+    private int weight;
+
+    @Column(name = "commit")
+    private String commit;
+
     @ManyToMany(mappedBy = "persons")
     private List<Executor> executors;
 
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
 
-    @Override
-    public String toString() {
-        return "Person {" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }

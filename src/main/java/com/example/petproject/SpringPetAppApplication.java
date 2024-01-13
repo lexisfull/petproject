@@ -1,23 +1,18 @@
 package com.example.petproject;
 
-import com.example.petproject.model.Executor;
-import com.example.petproject.model.Person;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
+@Slf4j
 @SpringBootApplication
 public class SpringPetAppApplication {
 
 	public static void main(String[] args) {
+		log.info("launching the application");
 		SpringApplication.run(SpringPetAppApplication.class, args);
-
 	}
 
 }

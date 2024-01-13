@@ -14,11 +14,12 @@ import java.util.Optional;
 public class PersonService {
 
     private final PersonRepository personRepository;
-    public List<Person> getPersons(){
+
+    public List<Person> getPersons() {
         return personRepository.findAll();
     }
 
-    public Person getPersonById(Integer id){
+    public Person getPersonById(Integer id) {
         Optional<Person> person = personRepository.findById(id);
         return person.orElseThrow();
     }
@@ -27,12 +28,12 @@ public class PersonService {
         personRepository.save(person);
     }
 
-    public List<Person> getListPersonByAge(int age){
+    public List<Person> getListPersonByAge(int age) {
         return personRepository.findAllByAge(age);
     }
 
 
-    public void deleteByPerson(Integer id){
+    public void deleteByPerson(Integer id) {
         personRepository.deleteById(id);
     }
 }

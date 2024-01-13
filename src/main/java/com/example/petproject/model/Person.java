@@ -2,39 +2,53 @@ package com.example.petproject.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
 @Entity
 @Table(name = "Person")
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Person {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    int id;
 
     @Column(name = "name", nullable = false)
-    private String name;
+    String name;
 
     @Column(name = "age")
-    private int age;
+    int age;
 
     @Column(name = "height")
-    private int height;
+    int height;
 
     @Column(name = "weight")
-    private int weight;
+    int weight;
 
     @Column(name = "commit")
-    private String commit;
+    String commit;
+
+    @OneToMany(mappedBy = "person_id")
+    List<Measurments> measurmentsList;
 
     @ManyToMany(mappedBy = "persons")
-    private List<Executor> executors;
+    List<Executor> executors;
 
+    @OneToMany(mappedBy = "person_id")
+    List<Recommendation> recommendationList;
+
+    @OneToMany(mappedBy = "person_id")
+    List<Eating> eatings;
+
+    @OneToMany(mappedBy = "person_id")
+    List<Analysis> analysisList;
 
 }

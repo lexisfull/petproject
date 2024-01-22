@@ -2,8 +2,15 @@ package com.example.petproject.model;
 
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -18,11 +25,11 @@ public class Eating {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    Long id;
 
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
-    Person person_id;
+    Person personId;
 
     @Column(name = "mealTime")
     String mealTime;
@@ -32,6 +39,9 @@ public class Eating {
 
     @Column(name = "withWom")
     String withWom;
+
+    @Column(name = "dateTime")
+    LocalDateTime dateTime;
 
     @OneToMany(mappedBy = "eat")
     List<Product> products;

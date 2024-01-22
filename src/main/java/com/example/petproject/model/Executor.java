@@ -1,21 +1,28 @@
 package com.example.petproject.model;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-import java.util.ArrayList;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
+
 @Entity
+@Table(name = "Executor")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Executor {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -39,7 +46,4 @@ public class Executor {
 
     )
     private List<Person> persons;
-
-
-
 }

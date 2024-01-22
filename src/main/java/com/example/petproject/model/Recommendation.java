@@ -1,14 +1,26 @@
 package com.example.petproject.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "Recomendation")
-@Builder
+//@Builder
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,15 +31,15 @@ public class Recommendation {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    Long id;
 
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
-    Person person_id;
+    Person personId;
 
     @ManyToOne
     @JoinColumn(name = "executor_id", referencedColumnName = "id")
-    Executor executor_id;
+    Executor executorId;
 
     @Column(name = "recommendation")
     String recommendation;

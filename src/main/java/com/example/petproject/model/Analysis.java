@@ -17,18 +17,16 @@ public class Analysis {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    Long id;
 
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
-    Person person_id;
-
+    Person personId;
 
     @Column(name = "result")
     String resultAnalyses;
 
     @Column(name = "subscribed_on")
     Date subscribedOn;
-
 
 }

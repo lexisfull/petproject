@@ -1,6 +1,7 @@
 package com.example.petproject.model;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Id;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -8,18 +9,17 @@ import java.util.List;
 
 @Entity
 @Table(name = "Person")
-@Getter
-@Setter
+@Data
 @Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Person {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    Long id;
 
     @Column(name = "name", nullable = false)
     String name;
@@ -27,28 +27,21 @@ public class Person {
     @Column(name = "age")
     int age;
 
-    @Column(name = "height")
-    int height;
-
-    @Column(name = "weight")
-    int weight;
-
     @Column(name = "commit")
     String commit;
 
-    @OneToMany(mappedBy = "person_id")
+    @OneToMany(mappedBy = "personId")
     List<Measurments> measurmentsList;
 
     @ManyToMany(mappedBy = "persons")
     List<Executor> executors;
 
-    @OneToMany(mappedBy = "person_id")
+    @OneToMany(mappedBy = "personId")
     List<Recommendation> recommendationList;
 
-    @OneToMany(mappedBy = "person_id")
+    @OneToMany(mappedBy = "personId")
     List<Eating> eatings;
 
-    @OneToMany(mappedBy = "person_id")
+    @OneToMany(mappedBy = "personId")
     List<Analysis> analysisList;
-
 }

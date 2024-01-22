@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Integer> {
+public interface PersonRepository extends JpaRepository<Person, Long> {
     List<Person> findAllByAge(int age);
-
+    Person findByName(String name);
 }

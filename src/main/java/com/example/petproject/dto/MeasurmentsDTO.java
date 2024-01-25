@@ -1,5 +1,6 @@
 package com.example.petproject.dto;
 
+import com.example.petproject.model.Person;
 import jakarta.persistence.Column;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -22,4 +23,7 @@ public class MeasurmentsDTO {
     int biceps;
 
     LocalDate data;
+
+    Long personId;
+
 }

@@ -31,13 +31,14 @@ public class AnalysisController {
         return analysisService.getAllAnalysisPerson(personId);
     }
 
-    @PostMapping("person/{personId}")
+    @PostMapping("/{personId}")
     @Operation(summary = "Добавляет анализы клиента")
     public void addAnalysis(@RequestBody AnalysisDTO analysisDTO, @PathVariable Long personId){
         analysisService.saveAnalysis(analysisDTO);
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "удаляет анализы пользователя по идентификатору")
     public void deleteAnalysis(@PathVariable Long id){
         analysisService.deleteAnalysis(id);
     }

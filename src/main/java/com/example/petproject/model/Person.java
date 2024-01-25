@@ -1,5 +1,6 @@
 package com.example.petproject.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 import lombok.*;
@@ -30,18 +31,19 @@ public class Person {
     @Column(name = "commit")
     String commit;
 
-    @OneToMany(mappedBy = "personId")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "person_id")
     List<Measurments> measurmentsList;
 
     @ManyToMany(mappedBy = "persons")
     List<Executor> executors;
 
-    @OneToMany(mappedBy = "personId")
+    @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL)
     List<Recommendation> recommendationList;
 
-    @OneToMany(mappedBy = "personId")
+    @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL)
     List<Eating> eatings;
 
-    @OneToMany(mappedBy = "personId")
+    @OneToMany(mappedBy = "personId", fetch = FetchType.LAZY)
     List<Analysis> analysisList;
 }

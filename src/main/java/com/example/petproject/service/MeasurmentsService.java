@@ -28,7 +28,7 @@ public class MeasurmentsService {
     }
 
     public List<MeasurmentsDTO> getMeasurmentsPersonId(Person personId){
-       return measurmentsRepository.findAllByPersonIdOrderByData(personId).stream()
+       return measurmentsRepository.findByPersonId(personId).stream()
                .map(this::convertToMeasurmentsDTO)
                .collect(Collectors.toList());
     }

@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Tag(name = "Мсполнители", description = "методы работы с исполнителями")
+@Tag(name = "Исполнители", description = "методы работы с исполнителями")
 public class ExecutorController {
 
     final ExecutorService executorService;

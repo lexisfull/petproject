@@ -20,7 +20,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Recomendation")
-//@Builder
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor

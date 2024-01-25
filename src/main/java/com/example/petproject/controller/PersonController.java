@@ -44,7 +44,8 @@ public class PersonController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Возвращает пользователя по идентификатору")
-    public ResponseEntity<PersonDTO> getPersonById(@Parameter(description = "id пользователя") @PathVariable("id") Long id) {
+    public ResponseEntity<PersonDTO> getPersonById(@Parameter(description = "id пользователя")
+                                                       @PathVariable("id") Long id) {
         PersonDTO person;
         try {
             person = personService.getPersonById(id);
@@ -58,7 +59,8 @@ public class PersonController {
 
     @GetMapping("person/{name}")
     @Operation(summary = "Возвращает пользователя по имени")
-    public ResponseEntity<PersonDTO> getPersonByName(@Parameter(description = "имя пользователя") @PathVariable String name) {
+    public ResponseEntity<PersonDTO> getPersonByName(@Parameter(description = "имя пользователя")
+                                                         @PathVariable String name) {
         PersonDTO personDTO;
         try {
             personDTO = personService.getPersonByName(name);

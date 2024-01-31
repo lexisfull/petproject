@@ -1,6 +1,7 @@
 package com.example.petproject.controller;
 
 import com.example.petproject.dto.PersonDTO;
+import com.example.petproject.mapper.AnalysisMapper;
 import com.example.petproject.model.Person;
 import com.example.petproject.service.PersonService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -34,6 +35,8 @@ import java.util.stream.Collectors;
 public class PersonController {
 
     private final PersonService personService;
+
+
 
     @GetMapping
     @Operation(summary = "Возвращает список пользователей")
@@ -71,7 +74,7 @@ public class PersonController {
         return new ResponseEntity<>(personDTO, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/person")
     @Operation(summary = "Добавляет пользователя")
     public void addPerson(@RequestBody PersonDTO personDTO) {
         personService.savePerson(personDTO);

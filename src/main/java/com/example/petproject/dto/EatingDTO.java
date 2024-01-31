@@ -22,5 +22,5 @@ public class EatingDTO {
 
     LocalDateTime dateTime;
 
-    Person personId;
+    Long personId;
 }

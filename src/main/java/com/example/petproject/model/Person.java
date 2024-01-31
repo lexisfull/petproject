@@ -31,7 +31,7 @@ public class Person {
     @Column(name = "commit")
     String commit;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
     List<Measurments> measurmentsList;
 
@@ -44,6 +44,6 @@ public class Person {
     @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL)
     List<Eating> eatings;
 
-    @OneToMany(mappedBy = "personId", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<Analysis> analysisList;
 }

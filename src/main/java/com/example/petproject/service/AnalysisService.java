@@ -1,6 +1,7 @@
 package com.example.petproject.service;
 
 import com.example.petproject.dao.AnalysisRepository;
+import com.example.petproject.dao.PersonRepository;
 import com.example.petproject.dto.AnalysisDTO;
 import com.example.petproject.model.Analysis;
 import com.example.petproject.model.Person;
@@ -30,6 +31,12 @@ public class AnalysisService {
                 .map(this::convertAnalysisDTO)
                 .collect(Collectors.toList());
     }
+
+//    public List<AnalysisDTO> getAllAnalysisPerson(String name){
+//        return analysisRepository.findByPersonIdName(name).stream()
+//                .map(this::convertAnalysisDTO)
+//                .collect(Collectors.toList());
+//    }
 
     public void saveAnalysis(AnalysisDTO analysisDTO){
         analysisRepository.save(convertAnalysis(analysisDTO));

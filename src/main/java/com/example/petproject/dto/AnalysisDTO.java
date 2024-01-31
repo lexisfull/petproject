@@ -1,5 +1,6 @@
 package com.example.petproject.dto;
 
+import com.example.petproject.model.Person;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -11,8 +12,6 @@ import java.util.Date;
 public class AnalysisDTO {
 
     String resultAnalyses;
-
-    Long personId;
 
     Date  subscribedOn;
 }

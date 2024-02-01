@@ -21,6 +21,4 @@ public class EatingDTO {
     String withWom;
 
     LocalDateTime dateTime;
-
-    Long personId;
 }

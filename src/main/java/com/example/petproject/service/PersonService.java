@@ -23,6 +23,7 @@ public class PersonService {
     private final PersonMapper personMapper;
 
     public List<PersonDTO> getPersons() {
+        log.info("Запрошен список пользователей");
         return personRepository.findAll().stream()
                 .map(personMapper::toDTONotAnalysis)
                 .collect(Collectors.toList());
@@ -40,10 +41,9 @@ public class PersonService {
         return personMapper.toDTO(person.orElseThrow());
     }
 
-    public void savePerson(PersonDTO personDTO) {
-
-        var person = personMapper.toPerson(personDTO);
-        personRepository.save(person);
+    public Person createPerson(PersonDTO personDTO) {
+        log.info("направлен запрос на создание ползователя с именем: {}", personDTO.getName());
+        return personRepository.save(personMapper.toPersonNotList(personDTO));
     }
 
     public void deleteByPerson(Long id) {

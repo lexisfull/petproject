@@ -24,17 +24,16 @@ public class PersonDTO {
 //    Person personId;
 
 
-//    List<Measurments> measurmentsList;
+//    List<MeasurmentsDTO> measurmentsList;
 //
 //
-//    List<Executor> executors;
+//    List<ExecutorDTO> executorList;
 //
 //
-//    List<Recommendation> recommendationList;
-//
-//
-//    List<Eating> eatings;
+//    List<RecommendationDTO> recommendationList;
 
+
+    List<EatingDTO> eatingDTOList;
 
     List<AnalysisDTO> analysisDTOList;
 }

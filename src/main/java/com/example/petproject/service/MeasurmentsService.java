@@ -2,10 +2,10 @@ package com.example.petproject.service;
 
 import com.example.petproject.dao.MeasurmentsRepository;
 import com.example.petproject.dto.MeasurmentsDTO;
+import com.example.petproject.mapper.MeasurmentsMapper;
 import com.example.petproject.model.Measurments;
 import com.example.petproject.model.Person;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +16,10 @@ import java.util.stream.Collectors;
 public class MeasurmentsService {
 
     private final MeasurmentsRepository measurmentsRepository;
+    private final MeasurmentsMapper measurmentsMapper;
 
-    private final ModelMapper modelMapper;
-
-    public void addMeasurments(MeasurmentsDTO measurmentsDTO){
-        measurmentsRepository.save(convertToMesurments(measurmentsDTO));
+    public Measurments addMeasurments(MeasurmentsDTO measurmentsDTO){
+        return measurmentsRepository.save(measurmentsMapper.toMeasurments(measurmentsDTO));
     }
 
     public void deleteMeasurments(Long id){
@@ -29,14 +28,9 @@ public class MeasurmentsService {
 
     public List<MeasurmentsDTO> getMeasurmentsPersonId(Person personId){
        return measurmentsRepository.findByPersonId(personId).stream()
-               .map(this::convertToMeasurmentsDTO)
+               .map(measurmentsMapper::toDTO)
                .collect(Collectors.toList());
     }
 
-    private MeasurmentsDTO convertToMeasurmentsDTO(Measurments measurments){
-        return modelMapper.map(measurments, MeasurmentsDTO.class);
-    }
-    private Measurments convertToMesurments(MeasurmentsDTO measurmentsDTO){
-        return modelMapper.map(measurmentsDTO, Measurments.class);
-    }
+
 }

@@ -9,6 +9,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +26,8 @@ public class ExecutorController {
 
     @PostMapping
     @Operation(summary = "добавляет исполнителя")
-    public void addExecutor(ExecutorDTO executorDTO){
-        executorService.addExecutor(executorDTO);
+    public ResponseEntity<Executor> addExecutor(ExecutorDTO executorDTO){
+        return new ResponseEntity<>(executorService.addExecutor(executorDTO), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

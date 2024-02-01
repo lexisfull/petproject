@@ -7,6 +7,8 @@ import com.example.petproject.service.AnalysisService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,8 +35,8 @@ public class AnalysisController {
 
     @PostMapping("/{personId}")
     @Operation(summary = "Добавляет анализы клиента")
-    public void addAnalysis(@RequestBody AnalysisDTO analysisDTO, @PathVariable Long personId){
-        analysisService.saveAnalysis(analysisDTO);
+    public ResponseEntity<Analysis> addAnalysis(@RequestBody AnalysisDTO analysisDTO, @PathVariable Long personId){
+        return new ResponseEntity<>(analysisService.saveAnalysis(analysisDTO), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

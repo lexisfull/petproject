@@ -9,8 +9,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,10 +72,10 @@ public class PersonController {
         return new ResponseEntity<>(personDTO, HttpStatus.OK);
     }
 
-    @PostMapping("/person")
+    @PostMapping
     @Operation(summary = "Добавляет пользователя")
-    public void addPerson(@RequestBody PersonDTO personDTO) {
-        personService.savePerson(personDTO);
+    public ResponseEntity<Person> addPerson(@RequestBody PersonDTO personDTO) {
+        return new ResponseEntity<>(personService.createPerson(personDTO), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

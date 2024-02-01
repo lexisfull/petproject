@@ -1,11 +1,14 @@
 package com.example.petproject.controller;
 
 import com.example.petproject.dto.MeasurmentsDTO;
+import com.example.petproject.model.Measurments;
 import com.example.petproject.model.Person;
 import com.example.petproject.service.MeasurmentsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +23,8 @@ public class MeasurmentsController {
 
     @PostMapping("/{personId}")
     @Operation(summary = "добавляет замеры по идентификатору пользователя")
-    public void addMeasurments(@RequestBody MeasurmentsDTO measurmentsDTO, @PathVariable Person personId){
-        measurmentsService.addMeasurments(measurmentsDTO);
+    public ResponseEntity<Measurments> addMeasurments(@RequestBody MeasurmentsDTO measurmentsDTO, @PathVariable Person personId){
+        return new ResponseEntity<>(measurmentsService.addMeasurments(measurmentsDTO), HttpStatus.OK);
     }
 
     @DeleteMapping
@@ -30,7 +33,7 @@ public class MeasurmentsController {
         measurmentsService.deleteMeasurments(id);
     }
 
-    @GetMapping("measurment/{personId}")
+    @GetMapping("measurments/{personId}")
     @Operation(summary = "возвращает все замеры по идентификатору пользователя")
     public List<MeasurmentsDTO> getMeasurmentsPerson(@PathVariable Person personId){
         return  measurmentsService.getMeasurmentsPersonId(personId);

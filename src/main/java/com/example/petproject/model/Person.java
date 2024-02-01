@@ -9,7 +9,7 @@ import lombok.experimental.FieldDefaults;
 import java.util.List;
 
 @Entity
-@Table(name = "Person")
+@Table(name = "person")
 @Data
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -42,7 +42,7 @@ public class Person {
     List<Recommendation> recommendationList;
 
     @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL)
-    List<Eating> eatings;
+    List<Eating> eatingList;
 
     @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<Analysis> analysisList;

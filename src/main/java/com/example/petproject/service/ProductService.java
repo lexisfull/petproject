@@ -1,13 +1,12 @@
 package com.example.petproject.service;
 
-import com.example.petproject.dao.PersonRepository;
 import com.example.petproject.dao.ProductRepository;
 import com.example.petproject.dto.ProductDTO;
+import com.example.petproject.mapper.ProductMapper;
 import com.example.petproject.model.Product;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,10 +18,11 @@ import java.util.stream.Collectors;
 public class ProductService {
 
     final ProductRepository productRepository;
-    final ModelMapper modelMapper;
 
-    public void addProduct(ProductDTO productDTO){
-        productRepository.save(convertToProduct(productDTO));
+    final ProductMapper productMapper;
+
+    public Product addProduct(ProductDTO productDTO){
+        return productRepository.save(productMapper.toProduct(productDTO));
     }
 
     public void deleteProductById(Long id){
@@ -31,19 +31,13 @@ public class ProductService {
 
     public List<ProductDTO> getAllProduct(){
         return productRepository.findAll()
-                .stream().map(this::convertToProductDTO)
+                .stream().map(productMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
     public ProductDTO getProduct(String name){
-        return convertToProductDTO(productRepository.findByName(name));
+        return productMapper.toDTO(productRepository.findByName(name));
     }
 
-    private Product convertToProduct(ProductDTO productDTO){
-        return modelMapper.map(productDTO, Product.class);
-    }
 
-    private ProductDTO convertToProductDTO(Product product){
-        return modelMapper.map(product, ProductDTO.class);
-    }
 }

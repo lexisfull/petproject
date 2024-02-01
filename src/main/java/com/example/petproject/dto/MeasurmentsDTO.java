@@ -24,6 +24,4 @@ public class MeasurmentsDTO {
 
     LocalDate data;
 
-    Long personId;
-
 }

@@ -26,7 +26,7 @@ public class Person {
     String name;
 
     @Column(name = "age")
-    int age;
+    Integer age;
 
     @Column(name = "commit")
     String commit;

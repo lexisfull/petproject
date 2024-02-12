@@ -15,23 +15,19 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PersonDTO {
 
+    Long id;
+
     String name;
 
-    int age;
+    Integer age;
 
     String commit;
 
-//    Person personId;
+    List<MeasurmentsDTO> measurmentsDTOList;
 
+    List<ExecutorDTO> executorList;
 
-//    List<MeasurmentsDTO> measurmentsList;
-//
-//
-//    List<ExecutorDTO> executorList;
-//
-//
-//    List<RecommendationDTO> recommendationList;
-
+    List<RecommendationDTO> recommendationList;
 
     List<EatingDTO> eatingDTOList;
 

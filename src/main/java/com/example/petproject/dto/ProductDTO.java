@@ -11,11 +11,11 @@ public class ProductDTO {
 
     String name;
 
-    int protein;
+    Integer protein;
 
-    int fat;
+    Integer fat;
 
-    int carbohydrates;
+    Integer carbohydrates;
 
-    int kcal;
+    Integer kcal;
 }

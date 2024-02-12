@@ -12,9 +12,9 @@ public class ExecutorDTO {
 
     private String name;
 
-    private int age;
+    private Integer age;
 
-    private int experience;
+    private Integer experience;
 
     private Type type;
 }

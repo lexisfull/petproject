@@ -33,19 +33,19 @@ public class Measurments {
     Person personId;
 
     @Column(name = "height")
-    int height;
+    Integer height;
 
     @Column(name = "weight")
-    int weight;
+    Integer weight;
 
     @Column(name = "waist")
-    int waist;
+    Integer waist;
 
     @Column(name = "breast")
-    int breast;
+    Integer breast;
 
     @Column(name = "biceps")
-    int biceps;
+    Integer biceps;
 
     @Column(name = "data")
     LocalDate data;

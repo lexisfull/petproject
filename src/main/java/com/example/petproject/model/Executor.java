@@ -28,10 +28,10 @@ public class Executor {
     private String name;
 
     @Column(name = "age")
-    private int age;
+    private Integer age;
 
     @Column(name = "experience")
-    private int experience;
+    private Integer experience;
 
     @Column(name = "type")
     private Type type;

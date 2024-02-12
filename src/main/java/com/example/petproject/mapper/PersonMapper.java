@@ -10,10 +10,12 @@ import org.mapstruct.Mapping;
 public interface PersonMapper {
     @Mapping(source = "person.analysisList", target = "analysisDTOList")
     @Mapping(source = "person.eatingList", target = "eatingDTOList")
+    @Mapping(source = "person.measurmentsList", target = "measurmentsDTOList")
     PersonDTO toDTO(Person person);
 
     @Mapping(target = "analysisDTOList", ignore = true)
     @Mapping(target = "eatingDTOList", ignore = true)
+    @Mapping(target = "measurmentsDTOList", ignore = true)
     PersonDTO toDTONotAnalysis(Person person);
 
     @Mapping(source = "personDTO.analysisDTOList", target = "analysisList")

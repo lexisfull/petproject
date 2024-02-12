@@ -12,15 +12,15 @@ import java.time.LocalDate;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MeasurmentsDTO {
 
-    int height;
+    Integer height;
 
-    int weight;
+    Integer weight;
 
-    int waist;
+    Integer waist;
 
-    int breast;
+    Integer breast;
 
-    int biceps;
+    Integer biceps;
 
     LocalDate data;
 

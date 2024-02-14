@@ -16,6 +16,8 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class EatingDTO {
 
+    Long id;
+
     String mealTime;
 
     String reasonEating;

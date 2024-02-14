@@ -23,8 +23,9 @@ public class MeasurmentsController {
 
     @PostMapping("/{personId}")
     @Operation(summary = "добавляет замеры по идентификатору пользователя")
-    public ResponseEntity<Measurments> addMeasurments(@RequestBody MeasurmentsDTO measurmentsDTO, @PathVariable Person personId){
-        return new ResponseEntity<>(measurmentsService.addMeasurments(measurmentsDTO), HttpStatus.OK);
+    public HttpStatus addMeasurments(@RequestBody MeasurmentsDTO measurmentsDTO, @PathVariable Person personId){
+        measurmentsService.addMeasurments(measurmentsDTO, personId);
+        return HttpStatus.OK;
     }
 
     @DeleteMapping
@@ -33,7 +34,7 @@ public class MeasurmentsController {
         measurmentsService.deleteMeasurments(id);
     }
 
-    @GetMapping("measurments/{personId}")
+    @GetMapping("/{personId}")
     @Operation(summary = "возвращает все замеры по идентификатору пользователя")
     public List<MeasurmentsDTO> getMeasurmentsPerson(@PathVariable Person personId){
         return  measurmentsService.getMeasurmentsPersonId(personId);

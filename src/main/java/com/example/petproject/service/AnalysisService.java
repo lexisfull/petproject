@@ -32,9 +32,10 @@ public class AnalysisService {
                 .collect(Collectors.toList());
     }
 
-    public Analysis saveAnalysis(AnalysisDTO analysisDTO){
+    public void saveAnalysis(AnalysisDTO analysisDTO, Person id){
         var analysis = analysisMapper.toAnalysis(analysisDTO);
-        return analysisRepository.save(analysis);
+        analysis.setPersonId(id);
+        analysisRepository.save(analysis);
     }
 
     public void deleteAnalysis(Long id){

@@ -18,8 +18,10 @@ public class MeasurmentsService {
     private final MeasurmentsRepository measurmentsRepository;
     private final MeasurmentsMapper measurmentsMapper;
 
-    public Measurments addMeasurments(MeasurmentsDTO measurmentsDTO){
-        return measurmentsRepository.save(measurmentsMapper.toMeasurments(measurmentsDTO));
+    public void addMeasurments(MeasurmentsDTO measurmentsDTO, Person personId){
+        var measurments = measurmentsMapper.toMeasurments(measurmentsDTO);
+        measurments.setPersonId(personId);
+        measurmentsRepository.save(measurments);
     }
 
     public void deleteMeasurments(Long id){

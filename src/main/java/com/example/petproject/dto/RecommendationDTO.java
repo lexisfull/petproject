@@ -10,6 +10,8 @@ import java.util.Date;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class RecommendationDTO {
 
+    Long id;
+
     String recommendation;
 
     Date dateRecommendation;

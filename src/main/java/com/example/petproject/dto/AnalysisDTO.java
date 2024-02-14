@@ -10,6 +10,10 @@ import java.util.Date;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AnalysisDTO {
+    
+    Long id;
+
+    Long personId;
 
     String resultAnalyses;
 

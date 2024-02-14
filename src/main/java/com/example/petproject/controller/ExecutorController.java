@@ -26,14 +26,16 @@ public class ExecutorController {
 
     @PostMapping
     @Operation(summary = "добавляет исполнителя")
-    public ResponseEntity<Executor> addExecutor(ExecutorDTO executorDTO){
-        return new ResponseEntity<>(executorService.addExecutor(executorDTO), HttpStatus.OK);
+    public HttpStatus addExecutor(@RequestBody ExecutorDTO executorDTO){
+        executorService.addExecutor(executorDTO);
+        return HttpStatus.OK;
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "удаляет исполнителя")
-    public void deleteExecutor(@PathVariable Long id){
+    public HttpStatus deleteExecutor(@PathVariable Long id){
         executorService.deleteExecutor(id);
+        return HttpStatus.OK;
     }
 
     @GetMapping

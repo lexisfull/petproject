@@ -37,14 +37,14 @@ public class Product {
     String name;
 
     @Column(name = "protein", nullable = false)
-    Integer protein;
+    Double protein;
 
     @Column(name = "fat", nullable = false)
-    Integer fat;
+    Double fat;
 
     @Column(name = "carbohydrates", nullable = false)
-    Integer carbohydrates;
+    Double carbohydrates;
 
     @Column(name = "kcal", nullable = false)
-    Integer kcal;
+    Double kcal;
 }

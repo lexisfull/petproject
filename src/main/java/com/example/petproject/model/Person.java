@@ -36,7 +36,7 @@ public class Person {
     List<Measurments> measurmentsList;
 
     @ManyToMany(mappedBy = "persons")
-    List<Executor> executors;
+    List<Executor> executorList;
 
     @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL)
     List<Recommendation> recommendationList;

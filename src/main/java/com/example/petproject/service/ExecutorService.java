@@ -22,7 +22,7 @@ public class ExecutorService {
 
     public List<ExecutorDTO> getAllExecutor(){
         return executorRepository.findAll().stream()
-                .map(executorMapper::toDTO)
+                .map(executorMapper::toNotPersonListDTO)
                 .collect(Collectors.toList());
     }
 

@@ -25,8 +25,10 @@ public class EatingService {
                 .collect(Collectors.toList());
     }
 
-    public Eating addEating(EatingDTO eatingDTO){
-        return eatingRepository.save(eatingMapper.toEating(eatingDTO));
+    public void addEating(EatingDTO eatingDTO, Person personId){
+        var eating = eatingMapper.toEating(eatingDTO);
+        eating.setPersonId(personId);
+        eatingRepository.save(eating);
     }
 
     public void deleteEating(Long id){

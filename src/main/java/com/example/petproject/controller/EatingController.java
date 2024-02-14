@@ -6,6 +6,7 @@ import com.example.petproject.service.EatingService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,10 +19,11 @@ public class EatingController {
 
     private final EatingService eatingService;
 
-    @PostMapping
+    @PostMapping("/{personId}")
     @Operation(summary = "Добавляет прием пищи")
-    public void addEating(@RequestBody EatingDTO eatingDTO){
-        eatingService.addEating(eatingDTO);
+    public HttpStatus addEating(@RequestBody EatingDTO eatingDTO, @PathVariable Person personId){
+        eatingService.addEating(eatingDTO, personId);
+        return HttpStatus.OK;
     }
 
     @DeleteMapping
@@ -30,7 +32,7 @@ public class EatingController {
         eatingService.deleteEating(id);
     }
 
-    @GetMapping("eat/{personId}")
+    @GetMapping("/{personId}")
     @Operation(summary = "возвращает прием пищи по идентификатору пользователя")
     public List<EatingDTO> getEatingPersonId(@PathVariable Person personId){
         return eatingService.getEatingPerson(personId);

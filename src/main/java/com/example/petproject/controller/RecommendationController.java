@@ -22,10 +22,11 @@ public class RecommendationController {
 
     private final RecommendationService recommendationService;
 
-    @PostMapping
+    @PostMapping("/{personId}")
     @Operation(summary = "добавляет рекомендацию")
-    public ResponseEntity<Recommendation> addRecommendation(@RequestBody RecommendationDTO recommendationDTO){
-        return new ResponseEntity<>(recommendationService.addRecommendation(recommendationDTO), HttpStatus.OK);
+    public HttpStatus addRecommendation(@RequestBody RecommendationDTO recommendationDTO, @PathVariable Person personId){
+        recommendationService.addRecommendation(recommendationDTO, personId);
+        return HttpStatus.OK;
     }
 
     @DeleteMapping("/{id}")

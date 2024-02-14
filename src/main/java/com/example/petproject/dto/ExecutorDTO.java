@@ -1,20 +1,27 @@
 package com.example.petproject.dto;
 
+import com.example.petproject.model.Person;
 import com.example.petproject.model.Type;
 import jakarta.persistence.Column;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ExecutorDTO {
 
-    private String name;
+    Long id;
 
-    private Integer age;
+    String name;
 
-    private Integer experience;
+    Integer age;
 
-    private Type type;
+    Integer experience;
+
+    Type type;
+
+    List<PersonDTO> personDTOList;
 }

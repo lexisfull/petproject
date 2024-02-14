@@ -25,9 +25,9 @@ public class PersonDTO {
 
     List<MeasurmentsDTO> measurmentsDTOList;
 
-    List<ExecutorDTO> executorList;
+    List<ExecutorDTO> executorDTOList;
 
-    List<RecommendationDTO> recommendationList;
+    List<RecommendationDTO> recommendationDTOList;
 
     List<EatingDTO> eatingDTOList;
 

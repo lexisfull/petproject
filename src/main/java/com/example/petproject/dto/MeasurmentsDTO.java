@@ -12,6 +12,8 @@ import java.time.LocalDate;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MeasurmentsDTO {
 
+    Long id;
+
     Integer height;
 
     Integer weight;

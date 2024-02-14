@@ -27,7 +27,7 @@ public class AnalysisController {
         return analysisService.getAllAnalysis();
     }
 
-    @GetMapping("person/{personId}")
+    @GetMapping("/{personId}")
     @Operation(summary = "Возвращает анализы пользователя по идентификатору")
     public List<AnalysisDTO> getAnalysisPerson(@PathVariable Person personId){
         return analysisService.getAllAnalysisPerson(personId);
@@ -35,14 +35,16 @@ public class AnalysisController {
 
     @PostMapping("/{personId}")
     @Operation(summary = "Добавляет анализы клиента")
-    public ResponseEntity<Analysis> addAnalysis(@RequestBody AnalysisDTO analysisDTO, @PathVariable Long personId){
-        return new ResponseEntity<>(analysisService.saveAnalysis(analysisDTO), HttpStatus.OK);
+    public HttpStatus addAnalysis(@RequestBody AnalysisDTO analysisDTO, @PathVariable Person personId){
+        analysisService.saveAnalysis(analysisDTO, personId);
+        return HttpStatus.OK;
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "удаляет анализы пользователя по идентификатору")
-    public void deleteAnalysis(@PathVariable Long id){
+    public HttpStatus deleteAnalysis(@PathVariable Long id){
         analysisService.deleteAnalysis(id);
+        return HttpStatus.OK;
     }
 
 }

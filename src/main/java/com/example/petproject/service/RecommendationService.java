@@ -20,8 +20,10 @@ public class RecommendationService {
 
     final RecommendationRepository recommendationRepository;
     final RecommendationMapper recommendationMapper;
-    public Recommendation addRecommendation(RecommendationDTO recommendationDTO){
-        return recommendationRepository.save(recommendationMapper.toRecommendation(recommendationDTO));
+    public void addRecommendation(RecommendationDTO recommendationDTO, Person personId){
+        var recommendation = recommendationMapper.toRecommendation(recommendationDTO);
+        recommendation.setPersonId(personId);
+        recommendationRepository.save(recommendation);
     }
     public void deleteRecommendation(Long id){
         recommendationRepository.deleteById(id);

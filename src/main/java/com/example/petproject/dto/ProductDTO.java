@@ -9,13 +9,15 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ProductDTO {
 
+    Long id;
+
     String name;
 
-    Integer protein;
+    Double protein;
 
-    Integer fat;
+    Double fat;
 
-    Integer carbohydrates;
+    Double carbohydrates;
 
-    Integer kcal;
+    Double kcal;
 }

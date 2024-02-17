@@ -18,6 +18,8 @@ public class AnalysisService {
 
     private final AnalysisRepository analysisRepository;
 
+    private final PersonRepository personRepository;
+
     private final AnalysisMapper analysisMapper;
 
     public List<AnalysisDTO> getAllAnalysis(){
@@ -32,9 +34,10 @@ public class AnalysisService {
                 .collect(Collectors.toList());
     }
 
-    public void saveAnalysis(AnalysisDTO analysisDTO, Person id){
+    public void saveAnalysis(AnalysisDTO analysisDTO){
         var analysis = analysisMapper.toAnalysis(analysisDTO);
-        analysis.setPersonId(id);
+        var person = personRepository.findById(analysisDTO.getPersonId()).orElseThrow();
+        analysis.setPersonId(person);
         analysisRepository.save(analysis);
     }
 

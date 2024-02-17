@@ -2,12 +2,15 @@ package com.example.petproject.dto;
 
 import com.example.petproject.model.Person;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AnalysisDTO {
     
@@ -17,5 +20,5 @@ public class AnalysisDTO {
 
     String resultAnalyses;
 
-    Date  subscribedOn;
+    LocalDate subscribedOn;
 }

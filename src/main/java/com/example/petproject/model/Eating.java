@@ -41,7 +41,7 @@ public class Eating {
     String withWom;
 
     @Column(name = "dateTime")
-    LocalDateTime dateTime;
+    LocalDate dateTime;
 
     @OneToMany(mappedBy = "eat")
     List<Product> products;

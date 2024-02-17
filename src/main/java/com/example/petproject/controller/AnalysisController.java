@@ -23,8 +23,8 @@ public class AnalysisController {
 
     @GetMapping
     @Operation(summary = "Возвращает список всех анализов")
-    public List<AnalysisDTO> getAllAnalysis(){
-        return analysisService.getAllAnalysis();
+    public ResponseEntity<List<AnalysisDTO>> getAllAnalysis(){
+        return new ResponseEntity<>(analysisService.getAllAnalysis(), HttpStatus.OK);
     }
 
     @GetMapping("/{personId}")
@@ -33,11 +33,11 @@ public class AnalysisController {
         return analysisService.getAllAnalysisPerson(personId);
     }
 
-    @PostMapping("/{personId}")
+    @PostMapping
     @Operation(summary = "Добавляет анализы клиента")
-    public HttpStatus addAnalysis(@RequestBody AnalysisDTO analysisDTO, @PathVariable Person personId){
-        analysisService.saveAnalysis(analysisDTO, personId);
-        return HttpStatus.OK;
+    public HttpStatus addAnalysis(@RequestBody AnalysisDTO analysisDTO){
+        analysisService.saveAnalysis(analysisDTO);
+        return HttpStatus.CREATED;
     }
 
     @DeleteMapping("/{id}")

@@ -19,15 +19,15 @@ public class EatingService {
 
     private final EatingMapper eatingMapper;
 
-    public List<EatingDTO> getEatingPerson(Person personId){
-        return eatingRepository.findByPersonIdOrderByDateTime(personId)
+    public List<EatingDTO> getEatingPerson(Person person){
+        return eatingRepository.findByPersonIdOrderByDateTime(person)
                 .stream().map(eatingMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
-    public void addEating(EatingDTO eatingDTO, Person personId){
+    public void addEating(EatingDTO eatingDTO, Person person){
         var eating = eatingMapper.toEating(eatingDTO);
-        eating.setPersonId(personId);
+        eating.setPerson(person);
         eatingRepository.save(eating);
     }
 

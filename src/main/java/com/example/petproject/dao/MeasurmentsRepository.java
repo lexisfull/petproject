@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface MeasurmentsRepository extends JpaRepository<Measurments, Long> {
-    List<Measurments> findByPersonId(Person personId);
+    List<Measurments> findByPersonId(Person person);
 }

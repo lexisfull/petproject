@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring", uses = {AnalysisListMapper.class,
-        EatingListMapper.class})
+        EatingListMapper.class, MeasurmentsListMapper.class})
 public interface PersonMapper {
     @Mapping(source = "person.analysisList", target = "analysisDTOList")
     @Mapping(source = "person.eatingList", target = "eatingDTOList")

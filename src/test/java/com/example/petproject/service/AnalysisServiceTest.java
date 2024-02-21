@@ -6,8 +6,6 @@ import com.example.petproject.dto.AnalysisDTO;
 import com.example.petproject.factory.TestObjectFactory;
 import com.example.petproject.mapper.AnalysisMapper;
 import com.example.petproject.model.Analysis;
-import com.example.petproject.model.Person;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -15,12 +13,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
+import static com.example.petproject.factory.TestObjectFactory.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.nullable;
 
 @ExtendWith(MockitoExtension.class)
 class AnalysisServiceTest {
@@ -39,7 +37,6 @@ class AnalysisServiceTest {
 
     @Test
     void getAllAnalysisTest() {
-
     }
 
     @Test
@@ -48,9 +45,11 @@ class AnalysisServiceTest {
 
     @Test
     void saveAnalysisTest() {
-        AnalysisDTO analysisDTO = TestObjectFactory.buildAnalysisDTO();
-        Mockito.when(analysisMapper.toAnalysis(analysisDTO)).thenReturn(TestObjectFactory.buildAnalysis());
-        Mockito.when(personRepository.findById(any())).thenReturn(Optional.of(TestObjectFactory.buildPerson()));
+        AnalysisDTO analysisDTO = buildAnalysisDTO();
+        Mockito.when(analysisMapper.toAnalysis(analysisDTO))
+                .thenReturn(buildListAnalysis().get(0));
+        Mockito.when(personRepository.findById(any()))
+                .thenReturn(Optional.of(buildPerson()));
 
         analysisService.saveAnalysis(analysisDTO);
 
@@ -59,5 +58,12 @@ class AnalysisServiceTest {
 
     @Test
     void deleteAnalysisTest() {
+        Analysis analysis = buildAnalysis();
+        Mockito.when(analysisRepository.findById(analysis.getId()))
+                .thenReturn(any());
+
+        analysisService.deleteAnalysis(analysis.getId());
+
+        Mockito.verify(analysisRepository, Mockito.times(1));
     }
 }

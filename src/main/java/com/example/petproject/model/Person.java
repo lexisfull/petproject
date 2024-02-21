@@ -31,19 +31,18 @@ public class Person {
     @Column(name = "commit")
     String commit;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "person_id")
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     List<Measurments> measurmentsList;
 
     @ManyToMany(mappedBy = "persons")
     List<Executor> executorList;
 
-    @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     List<Recommendation> recommendationList;
 
-    @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     List<Eating> eatingList;
 
-    @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<Analysis> analysisList;
 }

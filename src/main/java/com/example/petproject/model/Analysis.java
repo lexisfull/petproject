@@ -34,7 +34,7 @@ public class Analysis {
 
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
-    Person personId;
+    Person person;
 
     @Column(name = "result")
     String resultAnalyses;

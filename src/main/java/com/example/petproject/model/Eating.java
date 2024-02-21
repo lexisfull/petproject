@@ -28,8 +28,8 @@ public class Eating {
     Long id;
 
     @ManyToOne
-    @JoinColumn(name = "person_id", referencedColumnName = "id")
-    Person personId;
+    @JoinColumn(name = "person", referencedColumnName = "id")
+    Person person;
 
     @Column(name = "mealTime")
     String mealTime;
@@ -43,7 +43,12 @@ public class Eating {
     @Column(name = "dateTime")
     LocalDate dateTime;
 
-    @OneToMany(mappedBy = "eat")
+    @ManyToMany
+    @JoinTable(
+            name = "eat_product",
+            joinColumns = @JoinColumn(name = "eat"),
+            inverseJoinColumns = @JoinColumn(name = "product")
+    )
     List<Product> products;
 
 }

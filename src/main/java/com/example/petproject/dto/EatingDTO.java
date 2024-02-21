@@ -18,6 +18,8 @@ public class EatingDTO {
 
     Long id;
 
+    Long person;
+
     String mealTime;
 
     String reasonEating;

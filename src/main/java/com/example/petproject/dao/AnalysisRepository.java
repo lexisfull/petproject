@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface AnalysisRepository extends JpaRepository<Analysis, Long> {
 
-    List<Analysis> findByPersonId(Person personId);
+    List<Analysis> findByPerson(Person person);
 
 }

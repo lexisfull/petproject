@@ -22,15 +22,15 @@ public class RecommendationService {
     final RecommendationMapper recommendationMapper;
     public void addRecommendation(RecommendationDTO recommendationDTO, Person personId){
         var recommendation = recommendationMapper.toRecommendation(recommendationDTO);
-        recommendation.setPersonId(personId);
+        recommendation.setPerson(personId);
         recommendationRepository.save(recommendation);
     }
     public void deleteRecommendation(Long id){
         recommendationRepository.deleteById(id);
     }
 
-    public List<RecommendationDTO> getRecommendationDTOByPersonId(Person personId){
-        return recommendationRepository.findAllByPersonIdOrderByDateRecommendation(personId)
+    public List<RecommendationDTO> getRecommendationDTOByPersonId(Person person){
+        return recommendationRepository.findByPerson(person)
                 .stream().map(recommendationMapper::toDTO)
                 .collect(Collectors.toList());
     }

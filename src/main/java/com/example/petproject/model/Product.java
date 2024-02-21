@@ -4,6 +4,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
@@ -14,6 +15,8 @@ import lombok.Data;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Product")
@@ -29,9 +32,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "eat_id", referencedColumnName = "id")
-    Eating eat;
+    @ManyToMany(mappedBy = "products")
+    List<Eating> eats;
 
     @Column(name = "name", nullable = false)
     String name;

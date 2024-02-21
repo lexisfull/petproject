@@ -12,6 +12,8 @@ public class RecommendationDTO {
 
     Long id;
 
+    Long person;
+
     String recommendation;
 
     Date dateRecommendation;

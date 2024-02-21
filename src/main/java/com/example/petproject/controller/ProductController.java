@@ -23,7 +23,7 @@ public class ProductController {
     @PostMapping
     @Operation(summary = "добавляет продукт")
     public ResponseEntity<Product> addProduct(@RequestBody ProductDTO productDTO){
-        return new ResponseEntity<>(productService.addProduct(productDTO), HttpStatus.OK);
+        return new ResponseEntity<>(productService.addProduct(productDTO), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

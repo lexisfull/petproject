@@ -35,9 +35,9 @@ public class RecommendationController {
         recommendationService.deleteRecommendation(id);
     }
 
-    @GetMapping("/{personId}")
+    @GetMapping("/{person}")
     @Operation(summary = "возвращает список рекомендаций по идентификатору пользователя")
-    public List<RecommendationDTO> getRecommendationPerson(@PathVariable Person personId){
-        return recommendationService.getRecommendationDTOByPersonId(personId);
+    public List<RecommendationDTO> getRecommendationPerson(@PathVariable Person person){
+        return recommendationService.getRecommendationDTOByPersonId(person);
     }
 }

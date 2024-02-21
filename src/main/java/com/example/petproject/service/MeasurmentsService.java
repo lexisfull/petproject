@@ -18,9 +18,9 @@ public class MeasurmentsService {
     private final MeasurmentsRepository measurmentsRepository;
     private final MeasurmentsMapper measurmentsMapper;
 
-    public void addMeasurments(MeasurmentsDTO measurmentsDTO, Person personId){
+    public void addMeasurments(MeasurmentsDTO measurmentsDTO, Person person){
         var measurments = measurmentsMapper.toMeasurments(measurmentsDTO);
-        measurments.setPersonId(personId);
+        measurments.setPerson(person);
         measurmentsRepository.save(measurments);
     }
 

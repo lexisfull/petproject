@@ -14,6 +14,8 @@ public class MeasurmentsDTO {
 
     Long id;
 
+    Long person;
+
     Integer height;
 
     Integer weight;

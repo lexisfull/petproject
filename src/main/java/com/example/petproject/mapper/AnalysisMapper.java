@@ -11,15 +11,11 @@ import org.mapstruct.Qualifier;
 @Mapper(componentModel = "spring")
 public interface AnalysisMapper {
 
-    @Mapping(source = "personId.id", target = "personId")
+    @Mapping(source = "person.id", target = "person")
     AnalysisDTO toDTO(Analysis analysis);
 
-//    @Named("getPersonId")
-//    default Long getPersonId(Person personId){
-//        return personId.getId();
-//    }
 
-    @Mapping(target = "personId", ignore = true)
+    @Mapping(target = "person", ignore = true)
     Analysis toAnalysis(AnalysisDTO analysisDTO);
 
 }

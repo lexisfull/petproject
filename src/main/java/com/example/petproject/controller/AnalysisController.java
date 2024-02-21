@@ -27,10 +27,10 @@ public class AnalysisController {
         return new ResponseEntity<>(analysisService.getAllAnalysis(), HttpStatus.OK);
     }
 
-    @GetMapping("/{personId}")
+    @GetMapping("/{person}")
     @Operation(summary = "Возвращает анализы пользователя по идентификатору")
-    public List<AnalysisDTO> getAnalysisPerson(@PathVariable Person personId){
-        return analysisService.getAllAnalysisPerson(personId);
+    public ResponseEntity<List<AnalysisDTO>> getAnalysisPerson(@PathVariable Person person){
+        return new ResponseEntity<>(analysisService.getAllAnalysisPerson(person), HttpStatus.OK);
     }
 
     @PostMapping

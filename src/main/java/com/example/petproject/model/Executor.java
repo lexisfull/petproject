@@ -41,8 +41,8 @@ public class Executor {
     @ManyToMany
     @JoinTable(
             name = "person_executor",
-            joinColumns = @JoinColumn(name = "executor_id"),
-            inverseJoinColumns = @JoinColumn(name = "person_id")
+            joinColumns = @JoinColumn(name = "executor"),
+            inverseJoinColumns = @JoinColumn(name = "person")
 
     )
     private List<Person> persons;

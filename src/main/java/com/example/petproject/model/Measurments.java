@@ -29,8 +29,8 @@ public class Measurments {
     Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "person_id", referencedColumnName = "id")
-    Person personId;
+    @JoinColumn(name = "person", referencedColumnName = "id")
+    Person person;
 
     @Column(name = "height")
     Integer height;

@@ -16,7 +16,7 @@ public class AnalysisDTO {
     
     Long id;
 
-    Long personId;
+    Long person;
 
     String resultAnalyses;
 

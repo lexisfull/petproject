@@ -29,15 +29,16 @@ public class AnalysisService {
     }
 
     public List<AnalysisDTO> getAllAnalysisPerson(Person personId){
-        return analysisRepository.findByPersonId(personId).stream()
+        return analysisRepository.findAll().stream()
+                .filter(e -> e.getPerson() == personId)
                 .map(analysisMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
     public void saveAnalysis(AnalysisDTO analysisDTO){
         var analysis = analysisMapper.toAnalysis(analysisDTO);
-        var person = personRepository.findById(analysisDTO.getPersonId()).orElseThrow();
-        analysis.setPersonId(person);
+        var person = personRepository.findById(analysisDTO.getPerson()).orElseThrow();
+        analysis.setPerson(person);
         analysisRepository.save(analysis);
     }
 

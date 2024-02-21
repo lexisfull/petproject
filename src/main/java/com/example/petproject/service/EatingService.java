@@ -1,6 +1,7 @@
 package com.example.petproject.service;
 
 import com.example.petproject.dao.EatingRepository;
+import com.example.petproject.dao.PersonRepository;
 import com.example.petproject.dto.EatingDTO;
 import com.example.petproject.mapper.EatingMapper;
 import com.example.petproject.model.Eating;
@@ -17,6 +18,8 @@ public class EatingService {
 
     private final EatingRepository eatingRepository;
 
+    private final PersonRepository personRepository;
+
     private final EatingMapper eatingMapper;
 
     public List<EatingDTO> getEatingPerson(Person person){
@@ -25,8 +28,9 @@ public class EatingService {
                 .collect(Collectors.toList());
     }
 
-    public void addEating(EatingDTO eatingDTO, Person person){
+    public void addEating(EatingDTO eatingDTO){
         var eating = eatingMapper.toEating(eatingDTO);
+        var person = personRepository.findById(eatingDTO.getPerson()).orElseThrow();
         eating.setPerson(person);
         eatingRepository.save(eating);
     }

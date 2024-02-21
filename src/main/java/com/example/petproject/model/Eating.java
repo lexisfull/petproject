@@ -41,7 +41,7 @@ public class Eating {
     String withWom;
 
     @Column(name = "dateTime")
-    LocalDate dateTime;
+    LocalDateTime dateTime;
 
     @ManyToMany
     @JoinTable(

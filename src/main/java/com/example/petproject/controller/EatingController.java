@@ -19,10 +19,10 @@ public class EatingController {
 
     private final EatingService eatingService;
 
-    @PostMapping("/{personId}")
+    @PostMapping
     @Operation(summary = "Добавляет прием пищи")
-    public HttpStatus addEating(@RequestBody EatingDTO eatingDTO, @PathVariable Person personId){
-        eatingService.addEating(eatingDTO, personId);
+    public HttpStatus addEating(@RequestBody EatingDTO eatingDTO){
+        eatingService.addEating(eatingDTO);
         return HttpStatus.OK;
     }
 

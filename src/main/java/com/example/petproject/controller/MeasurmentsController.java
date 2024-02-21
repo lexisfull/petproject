@@ -21,10 +21,10 @@ public class MeasurmentsController {
 
     private final MeasurmentsService measurmentsService;
 
-    @PostMapping("/{personId}")
+    @PostMapping
     @Operation(summary = "добавляет замеры по идентификатору пользователя")
-    public HttpStatus addMeasurments(@RequestBody MeasurmentsDTO measurmentsDTO, @PathVariable Person personId){
-        measurmentsService.addMeasurments(measurmentsDTO, personId);
+    public HttpStatus addMeasurments(@RequestBody MeasurmentsDTO measurmentsDTO){
+        measurmentsService.addMeasurments(measurmentsDTO);
         return HttpStatus.OK;
     }
 

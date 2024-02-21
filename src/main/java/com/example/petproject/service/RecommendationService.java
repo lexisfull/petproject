@@ -1,5 +1,6 @@
 package com.example.petproject.service;
 
+import com.example.petproject.dao.PersonRepository;
 import com.example.petproject.dao.RecommendationRepository;
 import com.example.petproject.dto.RecommendationDTO;
 import com.example.petproject.mapper.RecommendationMapper;
@@ -19,10 +20,12 @@ import java.util.stream.Collectors;
 public class RecommendationService {
 
     final RecommendationRepository recommendationRepository;
+    final PersonRepository personRepository;
     final RecommendationMapper recommendationMapper;
-    public void addRecommendation(RecommendationDTO recommendationDTO, Person personId){
+    public void addRecommendation(RecommendationDTO recommendationDTO){
         var recommendation = recommendationMapper.toRecommendation(recommendationDTO);
-        recommendation.setPerson(personId);
+        var person = personRepository.findById(recommendationDTO.getPerson()).orElseThrow();
+        recommendation.setPerson(person);
         recommendationRepository.save(recommendation);
     }
     public void deleteRecommendation(Long id){

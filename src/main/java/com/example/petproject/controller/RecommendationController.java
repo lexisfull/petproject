@@ -22,17 +22,18 @@ public class RecommendationController {
 
     private final RecommendationService recommendationService;
 
-    @PostMapping("/{personId}")
+    @PostMapping
     @Operation(summary = "добавляет рекомендацию")
-    public HttpStatus addRecommendation(@RequestBody RecommendationDTO recommendationDTO, @PathVariable Person personId){
-        recommendationService.addRecommendation(recommendationDTO, personId);
+    public HttpStatus addRecommendation(@RequestBody RecommendationDTO recommendationDTO){
+        recommendationService.addRecommendation(recommendationDTO);
         return HttpStatus.OK;
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "удаляет рекомендацию по идентификатору")
-    public void deleteRecommendation(@PathVariable Long id){
+    public HttpStatus deleteRecommendation(@PathVariable Long id){
         recommendationService.deleteRecommendation(id);
+        return HttpStatus.OK;
     }
 
     @GetMapping("/{person}")

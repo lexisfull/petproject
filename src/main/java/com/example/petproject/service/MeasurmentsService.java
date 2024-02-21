@@ -1,6 +1,7 @@
 package com.example.petproject.service;
 
 import com.example.petproject.dao.MeasurmentsRepository;
+import com.example.petproject.dao.PersonRepository;
 import com.example.petproject.dto.MeasurmentsDTO;
 import com.example.petproject.mapper.MeasurmentsMapper;
 import com.example.petproject.model.Measurments;
@@ -16,10 +17,14 @@ import java.util.stream.Collectors;
 public class MeasurmentsService {
 
     private final MeasurmentsRepository measurmentsRepository;
+
+    private final PersonRepository personRepository;
+
     private final MeasurmentsMapper measurmentsMapper;
 
-    public void addMeasurments(MeasurmentsDTO measurmentsDTO, Person person){
+    public void addMeasurments(MeasurmentsDTO measurmentsDTO){
         var measurments = measurmentsMapper.toMeasurments(measurmentsDTO);
+        var person = personRepository.findById(measurmentsDTO.getPerson()).orElseThrow();
         measurments.setPerson(person);
         measurmentsRepository.save(measurments);
     }

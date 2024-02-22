@@ -38,9 +38,9 @@ public class PersonController {
 
     @GetMapping
     @Operation(summary = "Возвращает список пользователей")
-    public List<PersonDTO> getPearson() {
+    public ResponseEntity<List<PersonDTO>> getPearson() {
         log.info("referring to the method getPearson");
-        return personService.getPersons();
+        return new ResponseEntity<>(personService.getPersons(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -75,7 +75,7 @@ public class PersonController {
     @PostMapping
     @Operation(summary = "Добавляет пользователя")
     public ResponseEntity<Person> addPerson(@RequestBody PersonDTO personDTO) {
-        return new ResponseEntity<>(personService.createPerson(personDTO), HttpStatus.OK);
+        return new ResponseEntity<>(personService.createPerson(personDTO), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

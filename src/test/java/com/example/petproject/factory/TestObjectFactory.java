@@ -4,6 +4,7 @@ import com.example.petproject.dto.AnalysisDTO;
 import com.example.petproject.dto.EatingDTO;
 import com.example.petproject.dto.ExecutorDTO;
 import com.example.petproject.dto.MeasurmentsDTO;
+import com.example.petproject.dto.PersonDTO;
 import com.example.petproject.model.Analysis;
 import com.example.petproject.model.Eating;
 import com.example.petproject.model.Executor;
@@ -137,6 +138,26 @@ public class TestObjectFactory {
         }};
 
         return measurmentsDTOList;
+    }
+
+    public static PersonDTO buildPersonDTO(){
+        return PersonDTO.builder()
+                        .id(1L)
+                        .name("Vova")
+                        .age(35)
+                        .build();
+    }
+
+    public static List<PersonDTO> buildListPersonDTO(){
+        PersonDTO personDTO1 = buildPersonDTO();
+        PersonDTO personDTO2 = buildPersonDTO();
+        personDTO2.setId(2L);
+        personDTO2.setName("Sasha");
+        List<PersonDTO> personDTOList = new ArrayList<>(){{
+           add(personDTO1);
+           add(personDTO2);
+        }};
+        return personDTOList;
     }
 
 }

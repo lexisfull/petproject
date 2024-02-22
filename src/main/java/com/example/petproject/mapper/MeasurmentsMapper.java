@@ -8,7 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface MeasurmentsMapper {
 
-    @Mapping(source = "person.id", target = "person")
+    @Mapping(source = "person.id", target = "personId")
     MeasurmentsDTO toDTO(Measurments measurments);
 
     @Mapping(target = "person", ignore = true)

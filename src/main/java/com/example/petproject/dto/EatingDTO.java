@@ -4,6 +4,7 @@ import com.example.petproject.model.Person;
 import com.example.petproject.model.Product;
 import jakarta.persistence.Column;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,11 +15,12 @@ import java.util.List;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 public class EatingDTO {
 
     Long id;
 
-    Long person;
+    Long personId;
 
     String mealTime;
 

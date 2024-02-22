@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 public interface EatingMapper {
 
     @Mapping(source = "products", target = "productsDTOlist")
-    @Mapping(source = "person.id", target = "person")
+    @Mapping(source = "person.id", target = "personId")
     EatingDTO toDTO(Eating eating);
 
     @Mapping(target = "person", ignore = true)

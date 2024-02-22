@@ -12,7 +12,7 @@ public class RecommendationDTO {
 
     Long id;
 
-    Long person;
+    Long personId;
 
     String recommendation;
 

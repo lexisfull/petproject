@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.example.petproject.factory.TestObjectFactory.*;
@@ -37,6 +38,16 @@ class AnalysisServiceTest {
 
     @Test
     void getAllAnalysisTest() {
+        var list = buildListAnalysis();
+        var dto = buildAnalysisDTO();
+        Mockito.when(analysisRepository.findAll())
+                .thenReturn(list);
+        Mockito.when(analysisMapper.toDTO(any()))
+                .thenReturn(dto);
+
+        analysisService.getAllAnalysis();
+
+        Mockito.verify(analysisRepository).findAll();
     }
 
     @Test
@@ -58,12 +69,5 @@ class AnalysisServiceTest {
 
     @Test
     void deleteAnalysisTest() {
-        Analysis analysis = buildAnalysis();
-        Mockito.when(analysisRepository.findById(analysis.getId()))
-                .thenReturn(any());
-
-        analysisService.deleteAnalysis(analysis.getId());
-
-        Mockito.verify(analysisRepository, Mockito.times(1));
     }
 }

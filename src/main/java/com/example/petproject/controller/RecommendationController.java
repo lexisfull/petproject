@@ -36,9 +36,9 @@ public class RecommendationController {
         return HttpStatus.OK;
     }
 
-    @GetMapping("/{person}")
+    @GetMapping("/{personId}")
     @Operation(summary = "возвращает список рекомендаций по идентификатору пользователя")
-    public List<RecommendationDTO> getRecommendationPerson(@PathVariable Person person){
-        return recommendationService.getRecommendationDTOByPersonId(person);
+    public List<RecommendationDTO> getRecommendationPerson(@PathVariable Long personId){
+        return recommendationService.getRecommendationDTOByPersonId(personId);
     }
 }

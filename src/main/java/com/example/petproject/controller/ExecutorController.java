@@ -26,9 +26,9 @@ public class ExecutorController {
 
     @PostMapping
     @Operation(summary = "добавляет исполнителя")
-    public HttpStatus addExecutor(@RequestBody ExecutorDTO executorDTO){
+    public ResponseEntity<?> addExecutor(@RequestBody ExecutorDTO executorDTO){
         executorService.addExecutor(executorDTO);
-        return HttpStatus.OK;
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")

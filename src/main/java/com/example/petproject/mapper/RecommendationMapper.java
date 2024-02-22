@@ -8,7 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface RecommendationMapper {
 
-    @Mapping(source = "person.id", target = "person")
+    @Mapping(source = "person.id", target = "personId")
     RecommendationDTO toDTO(Recommendation recommendation);
 
     @Mapping(target = "person", ignore = true)

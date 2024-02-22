@@ -24,7 +24,7 @@ public class RecommendationService {
     final RecommendationMapper recommendationMapper;
     public void addRecommendation(RecommendationDTO recommendationDTO){
         var recommendation = recommendationMapper.toRecommendation(recommendationDTO);
-        var person = personRepository.findById(recommendationDTO.getPerson()).orElseThrow();
+        var person = personRepository.findById(recommendationDTO.getPersonId()).orElseThrow();
         recommendation.setPerson(person);
         recommendationRepository.save(recommendation);
     }
@@ -32,8 +32,8 @@ public class RecommendationService {
         recommendationRepository.deleteById(id);
     }
 
-    public List<RecommendationDTO> getRecommendationDTOByPersonId(Person person){
-        return recommendationRepository.findByPerson(person)
+    public List<RecommendationDTO> getRecommendationDTOByPersonId(Long personId){
+        return recommendationRepository.findAllByPersonId(personId)
                 .stream().map(recommendationMapper::toDTO)
                 .collect(Collectors.toList());
     }

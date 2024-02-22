@@ -22,15 +22,15 @@ public class EatingService {
 
     private final EatingMapper eatingMapper;
 
-    public List<EatingDTO> getEatingPerson(Person person){
-        return eatingRepository.findByPersonIdOrderByDateTime(person)
+    public List<EatingDTO> getEatingPerson(Long personId){
+        return eatingRepository.findAllByPersonIdOrderByDateTime(personId)
                 .stream().map(eatingMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
     public void addEating(EatingDTO eatingDTO){
         var eating = eatingMapper.toEating(eatingDTO);
-        var person = personRepository.findById(eatingDTO.getPerson()).orElseThrow();
+        var person = personRepository.findById(eatingDTO.getPersonId()).orElseThrow();
         eating.setPerson(person);
         eatingRepository.save(eating);
     }

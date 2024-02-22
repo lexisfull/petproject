@@ -27,24 +27,24 @@ public class AnalysisController {
         return new ResponseEntity<>(analysisService.getAllAnalysis(), HttpStatus.OK);
     }
 
-    @GetMapping("/{person}")
+    @GetMapping("/{personId}")
     @Operation(summary = "Возвращает анализы пользователя по идентификатору")
-    public ResponseEntity<List<AnalysisDTO>> getAnalysisPerson(@PathVariable Person person){
-        return new ResponseEntity<>(analysisService.getAllAnalysisPerson(person), HttpStatus.OK);
+    public ResponseEntity<List<AnalysisDTO>> getAnalysisPerson(@PathVariable Long personId){
+        return new ResponseEntity<>(analysisService.getAllAnalysisPerson(personId), HttpStatus.OK);
     }
 
     @PostMapping
     @Operation(summary = "Добавляет анализы клиента")
-    public HttpStatus addAnalysis(@RequestBody AnalysisDTO analysisDTO){
+    public ResponseEntity<?> addAnalysis(@RequestBody AnalysisDTO analysisDTO){
         analysisService.saveAnalysis(analysisDTO);
-        return HttpStatus.CREATED;
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "удаляет анализы пользователя по идентификатору")
-    public HttpStatus deleteAnalysis(@PathVariable Long id){
+    public ResponseEntity<?> deleteAnalysis(@PathVariable Long id){
         analysisService.deleteAnalysis(id);
-        return HttpStatus.OK;
+        return ResponseEntity.ok().build();
     }
 
 }

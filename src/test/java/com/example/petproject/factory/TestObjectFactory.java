@@ -1,7 +1,11 @@
 package com.example.petproject.factory;
 
 import com.example.petproject.dto.AnalysisDTO;
+import com.example.petproject.dto.EatingDTO;
+import com.example.petproject.dto.ExecutorDTO;
 import com.example.petproject.model.Analysis;
+import com.example.petproject.model.Eating;
+import com.example.petproject.model.Executor;
 import com.example.petproject.model.Person;
 
 import java.time.LocalDate;
@@ -14,7 +18,7 @@ public class TestObjectFactory {
                 .id(1L)
                 .personId(1L)
                 .resultAnalyses("analysis")
-                .subscribedOn(LocalDate.of(2024, 02, 03))
+                .subscribedOn(LocalDate.of(2024, 2, 3))
                 .build();
     }
 
@@ -23,13 +27,13 @@ public class TestObjectFactory {
         person1.setId(1L);
         Analysis analysis = Analysis.builder()
                 .id(1L)
-                .personId(person1)
+                .person(person1)
                 .resultAnalyses("analysis")
                 .subscribedOn(LocalDate.of(2024, 2, 3))
                 .build();
         Analysis analysis2 = Analysis.builder()
                 .id(2L)
-                .personId(person1)
+                .person(person1)
                 .resultAnalyses("analysis2")
                 .subscribedOn(LocalDate.of(2024, 3, 3))
                 .build();
@@ -41,13 +45,13 @@ public class TestObjectFactory {
 
     public static Analysis buildAnalysis(){
         Person person = buildPerson();
-        Analysis analysis = Analysis.builder()
+        return Analysis.builder()
                 .id(1L)
-                .personId(person)
+                .person(person)
                 .resultAnalyses("analysis")
                 .subscribedOn(LocalDate.of(2024, 2, 3))
                 .build();
-        return analysis;
+
     }
 
     public static Person buildPerson(){
@@ -55,6 +59,59 @@ public class TestObjectFactory {
                 .id(1L)
                 .name("Vova")
                 .build();
+    }
+
+    public static Eating buildEating(){
+        return Eating.builder()
+                .id(1L)
+                .person(null)
+                .dateTime(LocalDate.of(2024, 2, 3).atTime(15, 0))
+                .build();
+    }
+
+    public static EatingDTO buildEatingDTO(){
+        return EatingDTO.builder()
+                .id(1L)
+                .personId(1L)
+                .dateTime(LocalDate.of(2024, 2, 3).atTime(15, 0))
+                .build();
+    }
+
+    public static List<EatingDTO> buildListEatingDTO(){
+        EatingDTO eatingDTO1 = buildEatingDTO();
+        EatingDTO eatingDTO2 = buildEatingDTO();
+        eatingDTO2.setId(2L);
+        eatingDTO2.setPersonId(2L);
+        List<EatingDTO> eatingDTOList = new ArrayList<>();
+        eatingDTOList.add(eatingDTO1);
+        eatingDTOList.add(eatingDTO2);
+        return eatingDTOList;
+    }
+
+    public static ExecutorDTO buildExecutor(){
+
+        return ExecutorDTO.builder()
+                .id(1L)
+                .age(35)
+                .name("Masha")
+                .experience(5)
+                .build();
+
+    }
+
+    public static List<ExecutorDTO> buildListExecutor(){
+
+        ExecutorDTO executorDTO1 = buildExecutor();
+        ExecutorDTO executorDTO2 = buildExecutor();
+        executorDTO2.setId(2L);
+        executorDTO2.setName("Sasha");
+        executorDTO2.setAge(30);
+        executorDTO2.setExperience(4);
+        List<ExecutorDTO> executorDTOList = new ArrayList<>();
+        executorDTOList.add(executorDTO1);
+        executorDTOList.add(executorDTO2);
+
+        return executorDTOList;
     }
 
 }

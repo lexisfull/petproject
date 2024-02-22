@@ -24,7 +24,7 @@ public class MeasurmentsService {
 
     public void addMeasurments(MeasurmentsDTO measurmentsDTO){
         var measurments = measurmentsMapper.toMeasurments(measurmentsDTO);
-        var person = personRepository.findById(measurmentsDTO.getPerson()).orElseThrow();
+        var person = personRepository.findById(measurmentsDTO.getPersonId()).orElseThrow();
         measurments.setPerson(person);
         measurmentsRepository.save(measurments);
     }
@@ -33,8 +33,8 @@ public class MeasurmentsService {
         measurmentsRepository.deleteById(id);
     }
 
-    public List<MeasurmentsDTO> getMeasurmentsPersonId(Person personId){
-       return measurmentsRepository.findByPersonId(personId).stream()
+    public List<MeasurmentsDTO> getMeasurmentsPersonId(Long personId){
+       return measurmentsRepository.findAllByPersonId(personId).stream()
                .map(measurmentsMapper::toDTO)
                .collect(Collectors.toList());
     }

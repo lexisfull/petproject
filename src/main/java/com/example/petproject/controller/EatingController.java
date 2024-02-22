@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,20 +22,21 @@ public class EatingController {
 
     @PostMapping
     @Operation(summary = "Добавляет прием пищи")
-    public HttpStatus addEating(@RequestBody EatingDTO eatingDTO){
+    public ResponseEntity<?> addEating(@RequestBody EatingDTO eatingDTO){
         eatingService.addEating(eatingDTO);
-        return HttpStatus.OK;
+        return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @Operation(summary = "удаляет прием птщи")
-    public void deleteEating(Long id){
+    public ResponseEntity<?> deleteEating(@PathVariable Long id){
         eatingService.deleteEating(id);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{personId}")
     @Operation(summary = "возвращает прием пищи по идентификатору пользователя")
-    public List<EatingDTO> getEatingPersonId(@PathVariable Person personId){
-        return eatingService.getEatingPerson(personId);
+    public ResponseEntity<List<EatingDTO>> getEatingPersonId(@PathVariable Long personId){
+        return new ResponseEntity<>(eatingService.getEatingPerson(personId), HttpStatus.OK);
     }
 }

@@ -36,7 +36,7 @@ public class MeasurmentsController {
 
     @GetMapping("/{personId}")
     @Operation(summary = "возвращает все замеры по идентификатору пользователя")
-    public List<MeasurmentsDTO> getMeasurmentsPerson(@PathVariable Person personId){
+    public List<MeasurmentsDTO> getMeasurmentsPerson(@PathVariable Long personId){
         return  measurmentsService.getMeasurmentsPersonId(personId);
     }
 }

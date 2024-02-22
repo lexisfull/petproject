@@ -11,7 +11,7 @@ import org.mapstruct.Qualifier;
 @Mapper(componentModel = "spring")
 public interface AnalysisMapper {
 
-    @Mapping(source = "person.id", target = "person")
+    @Mapping(source = "person.id", target = "personId")
     AnalysisDTO toDTO(Analysis analysis);
 
 

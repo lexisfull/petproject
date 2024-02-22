@@ -9,8 +9,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.List;
 
@@ -76,6 +74,8 @@ class ExecutorControllerTest {
 
         mockMvc.perform(get("/executor/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value("1"));
+                .andExpect(jsonPath("$.id").value("1"))
+                .andExpect(jsonPath("$.age").value("35"))
+                .andExpect(jsonPath("$.name").value("Masha"));
     }
 }

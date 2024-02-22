@@ -3,9 +3,11 @@ package com.example.petproject.factory;
 import com.example.petproject.dto.AnalysisDTO;
 import com.example.petproject.dto.EatingDTO;
 import com.example.petproject.dto.ExecutorDTO;
+import com.example.petproject.dto.MeasurmentsDTO;
 import com.example.petproject.model.Analysis;
 import com.example.petproject.model.Eating;
 import com.example.petproject.model.Executor;
+import com.example.petproject.model.Measurments;
 import com.example.petproject.model.Person;
 
 import java.time.LocalDate;
@@ -112,6 +114,29 @@ public class TestObjectFactory {
         executorDTOList.add(executorDTO2);
 
         return executorDTOList;
+    }
+
+    public static MeasurmentsDTO buildMeasurmentsDTO(){
+        return MeasurmentsDTO.builder()
+                .id(1L)
+                .height(175)
+                .weight(80)
+                .build();
+    }
+
+    public static List<MeasurmentsDTO> buildListMeasurmentsDTO(){
+        MeasurmentsDTO measurmentsDTO1 = buildMeasurmentsDTO();
+        MeasurmentsDTO measurmentsDTO2 = buildMeasurmentsDTO();
+        measurmentsDTO2.setId(2L);
+        measurmentsDTO2.setHeight(170);
+        measurmentsDTO2.setWeight(95);
+
+        List<MeasurmentsDTO> measurmentsDTOList = new ArrayList<>(){{
+            add(measurmentsDTO1);
+            add(measurmentsDTO2);
+        }};
+
+        return measurmentsDTOList;
     }
 
 }

@@ -23,14 +23,14 @@ public class MeasurmentsController {
 
     @PostMapping
     @Operation(summary = "добавляет замеры по идентификатору пользователя")
-    public HttpStatus addMeasurments(@RequestBody MeasurmentsDTO measurmentsDTO){
+    public ResponseEntity<?> addMeasurments(@RequestBody MeasurmentsDTO measurmentsDTO){
         measurmentsService.addMeasurments(measurmentsDTO);
-        return HttpStatus.OK;
+        return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @Operation(summary = "удаляет замеры по идентификатору")
-    public void deleteMeasurments(Long id){
+    public void deleteMeasurments(@PathVariable Long id){
         measurmentsService.deleteMeasurments(id);
     }
 

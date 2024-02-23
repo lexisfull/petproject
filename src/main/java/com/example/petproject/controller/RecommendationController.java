@@ -24,9 +24,8 @@ public class RecommendationController {
 
     @PostMapping
     @Operation(summary = "добавляет рекомендацию")
-    public HttpStatus addRecommendation(@RequestBody RecommendationDTO recommendationDTO){
-        recommendationService.addRecommendation(recommendationDTO);
-        return HttpStatus.OK;
+    public ResponseEntity<Recommendation> addRecommendation(@RequestBody RecommendationDTO recommendationDTO){
+        return new ResponseEntity<>(recommendationService.addRecommendation(recommendationDTO), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

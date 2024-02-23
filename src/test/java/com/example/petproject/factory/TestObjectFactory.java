@@ -6,6 +6,7 @@ import com.example.petproject.dto.ExecutorDTO;
 import com.example.petproject.dto.MeasurmentsDTO;
 import com.example.petproject.dto.PersonDTO;
 import com.example.petproject.dto.ProductDTO;
+import com.example.petproject.dto.RecommendationDTO;
 import com.example.petproject.model.Analysis;
 import com.example.petproject.model.Eating;
 import com.example.petproject.model.Executor;
@@ -184,4 +185,22 @@ public class TestObjectFactory {
         return productDTOList;
     }
 
+    public static RecommendationDTO buildRecommendationDTO(){
+        return RecommendationDTO.builder()
+                .id(1L)
+                .personId(1L)
+                .recommendation("commit")
+                .build();
+    }
+
+    public static List<RecommendationDTO> buildListRecommendationDTO(){
+        RecommendationDTO recommendationDTO1 = buildRecommendationDTO();
+        RecommendationDTO recommendationDTO2 = buildRecommendationDTO();
+        recommendationDTO2.setId(2L);
+        recommendationDTO2.setRecommendation("commit2");
+        return new ArrayList<>(){{
+            add(recommendationDTO1);
+            add(recommendationDTO2);
+        }};
+    }
 }

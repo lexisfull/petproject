@@ -22,11 +22,11 @@ public class RecommendationService {
     final RecommendationRepository recommendationRepository;
     final PersonRepository personRepository;
     final RecommendationMapper recommendationMapper;
-    public void addRecommendation(RecommendationDTO recommendationDTO){
+    public Recommendation addRecommendation(RecommendationDTO recommendationDTO){
         var recommendation = recommendationMapper.toRecommendation(recommendationDTO);
         var person = personRepository.findById(recommendationDTO.getPersonId()).orElseThrow();
         recommendation.setPerson(person);
-        recommendationRepository.save(recommendation);
+        return recommendationRepository.save(recommendation);
     }
     public void deleteRecommendation(Long id){
         recommendationRepository.deleteById(id);

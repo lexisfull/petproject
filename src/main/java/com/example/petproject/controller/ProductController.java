@@ -38,9 +38,9 @@ public class ProductController {
         return new ResponseEntity<>(productService.getAllProduct(), HttpStatus.OK);
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/{id}")
     @Operation(summary = "возвращает продукт по названию")
-    public ProductDTO getProduct(@PathVariable String name){
-        return productService.getProduct(name);
+    public ProductDTO getProduct(@PathVariable Long id){
+        return productService.getProduct(id);
     }
 }

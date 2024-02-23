@@ -5,6 +5,7 @@ import com.example.petproject.dto.EatingDTO;
 import com.example.petproject.dto.ExecutorDTO;
 import com.example.petproject.dto.MeasurmentsDTO;
 import com.example.petproject.dto.PersonDTO;
+import com.example.petproject.dto.ProductDTO;
 import com.example.petproject.model.Analysis;
 import com.example.petproject.model.Eating;
 import com.example.petproject.model.Executor;
@@ -158,6 +159,29 @@ public class TestObjectFactory {
            add(personDTO2);
         }};
         return personDTOList;
+    }
+
+    public static ProductDTO buildProductDTO(){
+        return ProductDTO.builder()
+                .id(1L)
+                .name("рис")
+                .fat(7.2)
+                .protein(17d)
+                .carbohydrates(72d)
+                .build();
+    }
+
+    public static List<ProductDTO> buildListProductDTO(){
+        ProductDTO productDTO1 = buildProductDTO();
+        ProductDTO productDTO2 = buildProductDTO();
+        productDTO2.setId(2L);
+        productDTO2.setFat(1D);
+        productDTO2.setName("греча");
+        List<ProductDTO> productDTOList = new ArrayList<>(){{
+            add(productDTO1);
+            add(productDTO2);
+        }};
+        return productDTOList;
     }
 
 }

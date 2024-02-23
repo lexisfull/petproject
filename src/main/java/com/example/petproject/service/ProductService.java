@@ -35,8 +35,8 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    public ProductDTO getProduct(String name){
-        return productMapper.toDTO(productRepository.findByName(name));
+    public ProductDTO getProduct(Long id){
+        return productMapper.toDTO(productRepository.findAllById(id));
     }
 
 

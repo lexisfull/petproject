@@ -1,7 +1,6 @@
 package com.example.petproject.controller;
 
 import com.example.petproject.dto.PersonDTO;
-import com.example.petproject.mapper.AnalysisMapper;
 import com.example.petproject.model.Person;
 import com.example.petproject.service.PersonService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Рестконтроллер на который будет обращаться клиент
@@ -80,7 +78,8 @@ public class PersonController {
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Удаляет пользователя")
-    public void deletePerson(@Parameter(description = "id пользователя") @PathVariable("id") Long id) {
+    public ResponseEntity<?> deletePerson(@Parameter(description = "id пользователя") @PathVariable("id") Long id) {
         personService.deleteByPerson(id);
+        return ResponseEntity.ok().build();
     }
 }

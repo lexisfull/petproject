@@ -1,7 +1,6 @@
 package com.example.petproject.controller;
 
 import com.example.petproject.dto.PersonDTO;
-import com.example.petproject.factory.TestObjectFactory;
 import com.example.petproject.service.PersonService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

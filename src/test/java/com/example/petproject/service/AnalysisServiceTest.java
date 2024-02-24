@@ -4,6 +4,7 @@ import com.example.petproject.dao.AnalysisRepository;
 import com.example.petproject.dao.PersonRepository;
 import com.example.petproject.dto.AnalysisDTO;
 import com.example.petproject.mapper.AnalysisMapper;
+import com.example.petproject.service.AnalysisService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,7 +15,12 @@ import java.util.Optional;
 
 import static com.example.petproject.factory.TestObjectFactory.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.anyLong;
+import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 class AnalysisServiceTest {

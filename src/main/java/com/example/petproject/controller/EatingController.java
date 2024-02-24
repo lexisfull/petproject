@@ -1,7 +1,6 @@
 package com.example.petproject.controller;
 
 import com.example.petproject.dto.EatingDTO;
-import com.example.petproject.model.Person;
 import com.example.petproject.service.EatingService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

@@ -1,13 +1,10 @@
 package com.example.petproject.controller;
 
 import com.example.petproject.dto.MeasurmentsDTO;
-import com.example.petproject.model.Measurments;
-import com.example.petproject.model.Person;
 import com.example.petproject.service.MeasurmentsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

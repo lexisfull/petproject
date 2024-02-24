@@ -1,48 +1,17 @@
 package com.example.petproject.service;
 
-import com.example.petproject.dao.AnalysisRepository;
-import com.example.petproject.dao.PersonRepository;
 import com.example.petproject.dto.AnalysisDTO;
-import com.example.petproject.mapper.AnalysisMapper;
-import com.example.petproject.model.Analysis;
-import com.example.petproject.model.Person;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-@Service
-@RequiredArgsConstructor
-public class AnalysisService {
+public interface AnalysisService {
 
-    private final AnalysisRepository analysisRepository;
+    List<AnalysisDTO> getAllAnalysis();
 
-    private final PersonRepository personRepository;
+    List<AnalysisDTO> getAllAnalysisPerson(Long personId);
 
-    private final AnalysisMapper analysisMapper;
+    void saveAnalysis(AnalysisDTO analysisDTO);
 
-    public List<AnalysisDTO> getAllAnalysis(){
-        return analysisRepository.findAll().stream()
-                .map(analysisMapper::toDTO)
-                .collect(Collectors.toList());
-    }
-
-    public List<AnalysisDTO> getAllAnalysisPerson(Long personId){
-        return analysisRepository.findAllByPersonId(personId).stream()
-                .map(analysisMapper::toDTO)
-                .collect(Collectors.toList());
-    }
-
-    public void saveAnalysis(AnalysisDTO analysisDTO){
-        var analysis = analysisMapper.toAnalysis(analysisDTO);
-        var person = personRepository.findById(analysisDTO.getPersonId()).orElseThrow();
-        analysis.setPerson(person);
-        analysisRepository.save(analysis);
-    }
-
-    public void deleteAnalysis(Long id){
-        analysisRepository.deleteById(id);
-    }
+    void deleteAnalysis(Long id);
 
 }

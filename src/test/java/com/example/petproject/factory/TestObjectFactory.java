@@ -67,18 +67,30 @@ public class TestObjectFactory {
     }
 
     public static Eating buildEating(){
+        Person person = buildPerson();
         return Eating.builder()
                 .id(1L)
-                .person(null)
-                .dateTime(LocalDate.of(2024, 2, 3).atTime(15, 0))
+                .person(person)
+                .reasonEating("захотелось")
                 .build();
     }
+
+    public static List<Eating> buildListEating(){
+        Eating eating1 = buildEating();
+        Eating eating2 = buildEating();
+        eating2.setId(2L);
+        List<Eating> eatingList = new ArrayList<>();
+        eatingList.add(eating1);
+        eatingList.add(eating2);
+        return eatingList;
+    }
+
 
     public static EatingDTO buildEatingDTO(){
         return EatingDTO.builder()
                 .id(1L)
                 .personId(1L)
-                .dateTime(LocalDate.of(2024, 2, 3).atTime(15, 0))
+                .reasonEating("захотелось")
                 .build();
     }
 
@@ -86,7 +98,7 @@ public class TestObjectFactory {
         EatingDTO eatingDTO1 = buildEatingDTO();
         EatingDTO eatingDTO2 = buildEatingDTO();
         eatingDTO2.setId(2L);
-        eatingDTO2.setPersonId(2L);
+        eatingDTO2.setPersonId(1L);
         List<EatingDTO> eatingDTOList = new ArrayList<>();
         eatingDTOList.add(eatingDTO1);
         eatingDTOList.add(eatingDTO2);
@@ -203,4 +215,5 @@ public class TestObjectFactory {
             add(recommendationDTO2);
         }};
     }
+
 }

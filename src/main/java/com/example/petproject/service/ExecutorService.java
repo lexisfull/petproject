@@ -1,43 +1,17 @@
 package com.example.petproject.service;
 
-import com.example.petproject.dao.EatingRepository;
-import com.example.petproject.dao.ExecutorRepository;
-import com.example.petproject.dto.EatingDTO;
 import com.example.petproject.dto.ExecutorDTO;
-import com.example.petproject.mapper.ExecutorMapper;
 import com.example.petproject.model.Executor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
-@Service
-@RequiredArgsConstructor
-public class ExecutorService {
+public interface ExecutorService {
 
-    private final ExecutorRepository executorRepository;
-    private final ExecutorMapper executorMapper;
+    List<ExecutorDTO> getAllExecutor();
 
-    public List<ExecutorDTO> getAllExecutor(){
-        return executorRepository.findAll().stream()
-                .map(executorMapper::toNotPersonListDTO)
-                .collect(Collectors.toList());
-    }
+    ExecutorDTO getExecutorById(Long id);
 
-    public ExecutorDTO getExecutorById(Long id){
-        Optional<Executor> executor = executorRepository.findById(id);
-        return executorMapper.toDTO(executor.orElseThrow());
-    }
+    Executor addExecutor(ExecutorDTO executorDTO);
 
-
-    public Executor addExecutor(ExecutorDTO executorDTO){
-        return executorRepository.save(executorMapper.toExecutor(executorDTO));
-    }
-
-    public void deleteExecutor(Long id){
-        executorRepository.deleteById(id);
-    }
-
+    void deleteExecutor(Long id);
 }

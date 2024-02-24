@@ -1,11 +1,9 @@
 package com.example.petproject.controller;
 
 import com.example.petproject.dto.RecommendationDTO;
-import com.example.petproject.model.Person;
 import com.example.petproject.model.Recommendation;
 import com.example.petproject.service.RecommendationService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

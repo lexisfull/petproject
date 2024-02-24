@@ -1,7 +1,6 @@
 package com.example.petproject.controller;
 
 import com.example.petproject.dto.ExecutorDTO;
-import com.example.petproject.model.Executor;
 import com.example.petproject.service.ExecutorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

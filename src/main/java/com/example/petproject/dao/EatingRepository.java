@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface EatingRepository extends JpaRepository<Eating, Long> {
 
-    List<Eating> findAllByPersonIdOrderByDateTime(Long personId);
+    List<Eating> findAllByPersonId(Long personId);
 }

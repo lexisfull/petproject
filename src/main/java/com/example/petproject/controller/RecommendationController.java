@@ -2,40 +2,30 @@ package com.example.petproject.controller;
 
 import com.example.petproject.dto.RecommendationDTO;
 import com.example.petproject.model.Recommendation;
-import com.example.petproject.service.RecommendationService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @RequestMapping("/recommendation")
-@RestController
-@RequiredArgsConstructor
-@Tag(name = "рекоммендации", description = "методы для работы с рекоммендациями")
-public class RecommendationController {
-
-    private final RecommendationService recommendationService;
+public interface RecommendationController {
 
     @PostMapping
     @Operation(summary = "добавляет рекомендацию")
-    public ResponseEntity<Recommendation> addRecommendation(@RequestBody RecommendationDTO recommendationDTO){
-        return new ResponseEntity<>(recommendationService.addRecommendation(recommendationDTO), HttpStatus.CREATED);
-    }
+    public ResponseEntity<Recommendation> addRecommendation(@RequestBody RecommendationDTO recommendationDTO);
 
     @DeleteMapping("/{id}")
     @Operation(summary = "удаляет рекомендацию по идентификатору")
-    public HttpStatus deleteRecommendation(@PathVariable Long id){
-        recommendationService.deleteRecommendation(id);
-        return HttpStatus.OK;
-    }
+    public HttpStatus deleteRecommendation(@PathVariable Long id);
 
     @GetMapping("/{personId}")
     @Operation(summary = "возвращает список рекомендаций по идентификатору пользователя")
-    public List<RecommendationDTO> getRecommendationPerson(@PathVariable Long personId){
-        return recommendationService.getRecommendationDTOByPersonId(personId);
-    }
+    public List<RecommendationDTO> getRecommendationPerson(@PathVariable Long personId);
 }

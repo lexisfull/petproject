@@ -2,45 +2,33 @@ package com.example.petproject.controller;
 
 import com.example.petproject.dto.ProductDTO;
 import com.example.petproject.model.Product;
-import com.example.petproject.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @RequestMapping("/products")
-@RestController
-@RequiredArgsConstructor
-@Tag(name = "Продукты", description = "методы для работы с продуктами")
-public class ProductController {
-
-    private final ProductService productService;
+public interface ProductController {
 
     @PostMapping
     @Operation(summary = "добавляет продукт")
-    public ResponseEntity<Product> addProduct(@RequestBody ProductDTO productDTO){
-        return new ResponseEntity<>(productService.addProduct(productDTO), HttpStatus.CREATED);
-    }
+    ResponseEntity<Product> addProduct(@RequestBody ProductDTO productDTO);
 
     @DeleteMapping("/{id}")
     @Operation(summary = "удаляет продукт по идентификатору")
-    public void deleteProduct(@PathVariable Long id){
-        productService.deleteProductById(id);
-    }
+    public void deleteProduct(@PathVariable Long id);
 
     @GetMapping
     @Operation(summary = "возвращает список продуктов")
-    public ResponseEntity<List<ProductDTO>> getListProduct(){
-        return new ResponseEntity<>(productService.getAllProduct(), HttpStatus.OK);
-    }
+    public ResponseEntity<List<ProductDTO>> getListProduct();
 
     @GetMapping("/{id}")
     @Operation(summary = "возвращает продукт по названию")
-    public ProductDTO getProduct(@PathVariable Long id){
-        return productService.getProduct(id);
-    }
+    public ProductDTO getProduct(@PathVariable Long id);
 }

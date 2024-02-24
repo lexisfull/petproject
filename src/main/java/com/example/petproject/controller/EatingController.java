@@ -1,41 +1,29 @@
 package com.example.petproject.controller;
 
 import com.example.petproject.dto.EatingDTO;
-import com.example.petproject.service.EatingService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @RequestMapping("/eating")
-@RestController
-@RequiredArgsConstructor
-@Tag(name = "Приемы пищи", description = "методы для приема пищи")
-public class EatingController {
-
-    private final EatingService eatingService;
+public interface EatingController {
 
     @PostMapping
     @Operation(summary = "Добавляет прием пищи")
-    public ResponseEntity<?> addEating(@RequestBody EatingDTO eatingDTO){
-        eatingService.addEating(eatingDTO);
-        return ResponseEntity.ok().build();
-    }
+    ResponseEntity<?> addEating(@RequestBody EatingDTO eatingDTO);
 
     @DeleteMapping("/{id}")
     @Operation(summary = "удаляет прием птщи")
-    public ResponseEntity<?> deleteEating(@PathVariable Long id){
-        eatingService.deleteEating(id);
-        return ResponseEntity.ok().build();
-    }
+    ResponseEntity<?> deleteEating(@PathVariable Long id);
 
     @GetMapping("/{personId}")
     @Operation(summary = "возвращает прием пищи по идентификатору пользователя")
-    public ResponseEntity<List<EatingDTO>> getEatingPersonId(@PathVariable Long personId){
-        return new ResponseEntity<>(eatingService.getEatingPerson(personId), HttpStatus.OK);
-    }
+    ResponseEntity<List<EatingDTO>> getEatingPersonId(@PathVariable Long personId);
 }

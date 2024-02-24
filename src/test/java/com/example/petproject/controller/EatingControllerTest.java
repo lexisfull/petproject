@@ -1,5 +1,6 @@
 package com.example.petproject.controller;
 
+import com.example.petproject.controller.api.EatingAPI;
 import com.example.petproject.dto.EatingDTO;
 import com.example.petproject.service.EatingService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,7 +24,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(EatingController.class)
+@WebMvcTest(EatingAPI.class)
 class EatingControllerTest {
 
     @MockBean

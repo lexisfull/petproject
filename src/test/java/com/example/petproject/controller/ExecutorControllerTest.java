@@ -1,5 +1,6 @@
 package com.example.petproject.controller;
 
+import com.example.petproject.controller.api.ExecutorAPI;
 import com.example.petproject.dto.ExecutorDTO;
 import com.example.petproject.service.ExecutorService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@WebMvcTest(ExecutorController.class)
+@WebMvcTest(ExecutorAPI.class)
 class ExecutorControllerTest {
 
     @MockBean

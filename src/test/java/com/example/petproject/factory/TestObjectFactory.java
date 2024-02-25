@@ -213,6 +213,8 @@ public class TestObjectFactory {
                         .build();
     }
 
+
+
     public static List<PersonDTO> buildListPersonDTO(){
         PersonDTO personDTO1 = buildPersonDTO();
         PersonDTO personDTO2 = buildPersonDTO();
@@ -223,6 +225,18 @@ public class TestObjectFactory {
            add(personDTO2);
         }};
         return personDTOList;
+    }
+
+    public static List<Person> buildListPerson(){
+        Person person1 = buildPerson();
+        Person person2 = buildPerson();
+        person1.setId(2L);
+        person2.setName("Sasha");
+        List<Person> personList = new ArrayList<>(){{
+            add(person1);
+            add(person2);
+        }};
+        return personList;
     }
 
     public static ProductDTO buildProductDTO(){

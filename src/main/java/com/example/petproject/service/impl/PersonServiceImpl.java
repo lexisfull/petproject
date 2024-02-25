@@ -47,10 +47,6 @@ public class PersonServiceImpl implements PersonService {
         return personRepository.save(personMapper.toPersonNotList(personDTO));
     }
 
-    public void addAnalysis(PersonDTO personDTO){
-        personRepository.save(personMapper.toPerson(personDTO));
-    }
-
     public void deleteByPerson(Long id) {
         personRepository.deleteById(id);
     }

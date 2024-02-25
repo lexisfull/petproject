@@ -15,7 +15,5 @@ public interface PersonService {
 
     Person createPerson(PersonDTO personDTO);
 
-    void addAnalysis(PersonDTO personDTO);
-
     void deleteByPerson(Long id);
 }

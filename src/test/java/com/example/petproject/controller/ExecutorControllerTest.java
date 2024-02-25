@@ -1,6 +1,5 @@
 package com.example.petproject.controller;
 
-import com.example.petproject.controller.api.ExecutorAPI;
 import com.example.petproject.dto.ExecutorDTO;
 import com.example.petproject.service.ExecutorService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,8 +12,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
-import static com.example.petproject.factory.TestObjectFactory.buildExecutor;
-import static com.example.petproject.factory.TestObjectFactory.buildListExecutor;
+import static com.example.petproject.factory.TestObjectFactory.buildExecutorDTO;
+import static com.example.petproject.factory.TestObjectFactory.buildListExecutorDTO;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -24,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@WebMvcTest(ExecutorAPI.class)
+@WebMvcTest(ExecutorController.class)
 class ExecutorControllerTest {
 
     @MockBean
@@ -38,7 +37,7 @@ class ExecutorControllerTest {
 
     @Test
     void addExecutorTests_shouldStatusIsOk() throws Exception {
-        ExecutorDTO executorDTO = buildExecutor();
+        ExecutorDTO executorDTO = buildExecutorDTO();
 
         mockMvc.perform(post("/executor")
                         .content(objectMapper.writeValueAsString(executorDTO))
@@ -55,7 +54,7 @@ class ExecutorControllerTest {
 
     @Test
     void getAllExecutorTest_shouldListExecutor_andStatusIsOk() throws Exception {
-        List<ExecutorDTO> executorDTOList = buildListExecutor();
+        List<ExecutorDTO> executorDTOList = buildListExecutorDTO();
         when(executorService.getAllExecutor())
                 .thenReturn(executorDTOList);
 
@@ -69,7 +68,7 @@ class ExecutorControllerTest {
 
     @Test
     void getExecutorIdTest_shouldExecutor_andStatusIsOk() throws Exception {
-        ExecutorDTO executorDTO = buildExecutor();
+        ExecutorDTO executorDTO = buildExecutorDTO();
         when(executorService.getExecutorById(1L))
                 .thenReturn(executorDTO);
 

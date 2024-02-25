@@ -105,7 +105,7 @@ public class TestObjectFactory {
         return eatingDTOList;
     }
 
-    public static ExecutorDTO buildExecutor(){
+    public static ExecutorDTO buildExecutorDTO(){
 
         return ExecutorDTO.builder()
                 .id(1L)
@@ -116,10 +116,10 @@ public class TestObjectFactory {
 
     }
 
-    public static List<ExecutorDTO> buildListExecutor(){
+    public static List<ExecutorDTO> buildListExecutorDTO(){
 
-        ExecutorDTO executorDTO1 = buildExecutor();
-        ExecutorDTO executorDTO2 = buildExecutor();
+        ExecutorDTO executorDTO1 = buildExecutorDTO();
+        ExecutorDTO executorDTO2 = buildExecutorDTO();
         executorDTO2.setId(2L);
         executorDTO2.setName("Sasha");
         executorDTO2.setAge(30);
@@ -131,8 +131,43 @@ public class TestObjectFactory {
         return executorDTOList;
     }
 
+    public static Executor buildExecutor(){
+
+        return Executor.builder()
+                .id(1L)
+                .age(35)
+                .name("Masha")
+                .experience(5)
+                .build();
+
+    }
+
+    public static List<Executor> buildListExecutor(){
+
+        Executor executor1 = buildExecutor();
+        Executor executor2 = buildExecutor();
+        executor2.setId(2L);
+        executor2.setName("Sasha");
+        executor2.setAge(30);
+        executor2.setExperience(4);
+        List<Executor> executorList = new ArrayList<>();
+        executorList.add(executor1);
+        executorList.add(executor2);
+
+        return executorList;
+    }
+
+
     public static MeasurmentsDTO buildMeasurmentsDTO(){
         return MeasurmentsDTO.builder()
+                .id(1L)
+                .height(175)
+                .weight(80)
+                .build();
+    }
+
+    public static Measurments buildMeasurments(){
+        return Measurments.builder()
                 .id(1L)
                 .height(175)
                 .weight(80)
@@ -153,6 +188,22 @@ public class TestObjectFactory {
 
         return measurmentsDTOList;
     }
+
+    public static List<Measurments> buildListMeasurments(){
+        Measurments measurments1 = buildMeasurments();
+        Measurments measurments2 = buildMeasurments();
+        measurments2.setId(2L);
+        measurments2.setHeight(170);
+        measurments2.setWeight(95);
+
+        List<Measurments> measurmentsList = new ArrayList<>(){{
+            add(measurments1);
+            add(measurments2);
+        }};
+
+        return measurmentsList;
+    }
+
 
     public static PersonDTO buildPersonDTO(){
         return PersonDTO.builder()

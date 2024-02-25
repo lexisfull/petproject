@@ -32,6 +32,4 @@ public class ExecutorDTO {
 
     List<PersonDTO> personDTOList;
 
-
-    List<ExecutorDTO> executorDTOList;
 }

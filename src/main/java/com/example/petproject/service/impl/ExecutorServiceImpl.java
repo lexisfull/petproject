@@ -22,7 +22,7 @@ public class ExecutorServiceImpl implements ExecutorService {
     @Override
     public List<ExecutorDTO> getAllExecutor(){
         return executorRepository.findAll().stream()
-                .map(executorMapper::toNotPersonListDTO)
+                .map(executorMapper::toDTO)
                 .collect(Collectors.toList());
     }
 

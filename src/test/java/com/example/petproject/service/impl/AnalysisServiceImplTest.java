@@ -1,10 +1,10 @@
-package com.example.petproject.service;
+package com.example.petproject.service.impl;
 
 import com.example.petproject.dao.AnalysisRepository;
 import com.example.petproject.dao.PersonRepository;
 import com.example.petproject.dto.AnalysisDTO;
 import com.example.petproject.mapper.AnalysisMapper;
-import com.example.petproject.service.AnalysisService;
+import com.example.petproject.service.impl.AnalysisServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -23,7 +23,7 @@ import static org.mockito.Mockito.anyLong;
 import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
-class AnalysisServiceTest {
+class AnalysisServiceImplTest {
 
     @Mock
     private AnalysisMapper analysisMapper;
@@ -35,10 +35,10 @@ class AnalysisServiceTest {
     private AnalysisRepository analysisRepository;
 
     @InjectMocks
-    private AnalysisService analysisService;
+    private AnalysisServiceImpl analysisService;
 
     @Test
-    void getAllAnalysisTest() {
+    void shouldGet_AllAnalysis_Test() {
         var list = buildListAnalysis();
         var dto = buildAnalysisDTO();
         when(analysisRepository.findAll())
@@ -66,7 +66,7 @@ class AnalysisServiceTest {
     }
 
     @Test
-    void shouldSave_AnalysisTest() {
+    void shouldSave_Analysis_Test() {
         AnalysisDTO analysisDTO = buildAnalysisDTO();
         when(analysisMapper.toAnalysis(analysisDTO))
                 .thenReturn(buildListAnalysis().get(0));

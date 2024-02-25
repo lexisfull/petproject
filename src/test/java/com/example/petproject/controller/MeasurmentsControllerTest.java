@@ -1,6 +1,5 @@
 package com.example.petproject.controller;
 
-import com.example.petproject.controller.api.MeasurmentsAPI;
 import com.example.petproject.dto.MeasurmentsDTO;
 import com.example.petproject.service.MeasurmentsService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,7 +20,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(MeasurmentsAPI.class)
+@WebMvcTest(MeasurmentsController.class)
 class MeasurmentsControllerTest {
 
     @MockBean

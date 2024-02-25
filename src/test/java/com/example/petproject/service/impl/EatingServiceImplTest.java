@@ -1,15 +1,16 @@
-package com.example.petproject.service;
+package com.example.petproject.service.impl;
 
 import com.example.petproject.dao.EatingRepository;
 import com.example.petproject.dao.PersonRepository;
 import com.example.petproject.dto.EatingDTO;
 import com.example.petproject.mapper.EatingListMapper;
 import com.example.petproject.mapper.EatingMapper;
+import com.example.petproject.service.impl.EatingServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Optional;
 
@@ -25,22 +26,22 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class EatingServiceTest {
+class EatingServiceImplTest {
 
-    @MockBean
+    @Mock
     private EatingRepository eatingRepository;
 
-    @MockBean
+    @Mock
     private PersonRepository personRepository;
 
-    @MockBean
+    @Mock
     private EatingMapper eatingMapper;
 
-    @MockBean
+    @Mock
     private EatingListMapper eatingListMapper;
 
     @InjectMocks
-    private EatingService eatingService;
+    private EatingServiceImpl eatingService;
 
     @Test
     void shouldGetEating_PersonId() {

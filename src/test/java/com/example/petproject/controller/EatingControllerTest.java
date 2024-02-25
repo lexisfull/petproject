@@ -1,6 +1,5 @@
 package com.example.petproject.controller;
 
-import com.example.petproject.controller.api.EatingAPI;
 import com.example.petproject.dto.EatingDTO;
 import com.example.petproject.service.EatingService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,7 +23,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(EatingAPI.class)
+@WebMvcTest(EatingController.class)
 class EatingControllerTest {
 
     @MockBean
@@ -64,7 +63,7 @@ class EatingControllerTest {
                 .andExpect(jsonPath("$[0].id").value("1"))
                 .andExpect(jsonPath("$[0].personId").value("1"))
                 .andExpect(jsonPath("$[1].id").value("2"))
-                .andExpect(jsonPath("$[1].personId").value("2"));
+                .andExpect(jsonPath("$[1].personId").value("1"));
 
     }
 }

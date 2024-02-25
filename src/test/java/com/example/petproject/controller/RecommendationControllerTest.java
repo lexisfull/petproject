@@ -1,6 +1,5 @@
 package com.example.petproject.controller;
 
-import com.example.petproject.controller.api.RecommendationAPI;
 import com.example.petproject.dto.RecommendationDTO;
 import com.example.petproject.service.RecommendationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,7 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(RecommendationAPI.class)
+@WebMvcTest(RecommendationController.class)
 class RecommendationControllerTest {
 
     @MockBean

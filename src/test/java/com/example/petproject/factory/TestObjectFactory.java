@@ -12,6 +12,8 @@ import com.example.petproject.model.Eating;
 import com.example.petproject.model.Executor;
 import com.example.petproject.model.Measurments;
 import com.example.petproject.model.Person;
+import com.example.petproject.model.Product;
+import com.example.petproject.model.Recommendation;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -249,6 +251,16 @@ public class TestObjectFactory {
                 .build();
     }
 
+    public static Product buildProduct(){
+        return Product.builder()
+                .id(1L)
+                .name("рис")
+                .fat(7.2)
+                .protein(17d)
+                .carbohydrates(72d)
+                .build();
+    }
+
     public static List<ProductDTO> buildListProductDTO(){
         ProductDTO productDTO1 = buildProductDTO();
         ProductDTO productDTO2 = buildProductDTO();
@@ -262,6 +274,20 @@ public class TestObjectFactory {
         return productDTOList;
     }
 
+    public static List<Product> buildListProduct(){
+        Product product1 = buildProduct();
+        Product product2 = buildProduct();
+        product2.setId(2L);
+        product2.setFat(1D);
+        product2.setName("греча");
+        List<Product> productList = new ArrayList<>(){{
+            add(product1);
+            add(product2);
+        }};
+        return productList;
+    }
+
+
     public static RecommendationDTO buildRecommendationDTO(){
         return RecommendationDTO.builder()
                 .id(1L)
@@ -269,6 +295,14 @@ public class TestObjectFactory {
                 .recommendation("commit")
                 .build();
     }
+
+    public static Recommendation buildRecommendation(){
+        return Recommendation.builder()
+                .id(1L)
+                .recommendation("commit")
+                .build();
+    }
+
 
     public static List<RecommendationDTO> buildListRecommendationDTO(){
         RecommendationDTO recommendationDTO1 = buildRecommendationDTO();
@@ -280,5 +314,19 @@ public class TestObjectFactory {
             add(recommendationDTO2);
         }};
     }
+
+    public static List<Recommendation> buildListRecommendation(){
+        Recommendation recommendation1 = buildRecommendation();
+        Recommendation recommendation2 = buildRecommendation();
+        recommendation2.setId(2L);
+        recommendation2.setRecommendation("commit2");
+        return new ArrayList<Recommendation>(){{
+           add(recommendation1);
+           add(recommendation2);
+        }};
+    }
+
+
+
 
 }

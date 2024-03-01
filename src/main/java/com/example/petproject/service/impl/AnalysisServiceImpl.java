@@ -7,12 +7,14 @@ import com.example.petproject.mapper.AnalysisMapper;
 import com.example.petproject.service.AnalysisService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AnalysisServiceImpl implements AnalysisService{
 
     private final AnalysisRepository analysisRepository;

@@ -1,46 +1,52 @@
-version: '3.8'
+version: '3.9'
 services:
   client-backend:
     container_name: backend
-    image: client
+    image: docker-spring-boot-postgres:latest
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    depends_on:
-      - service-db
+    network_mode: host
+#    depends_on:
+#      - service-db
     environment:
-      - SERVER_PORT=8080
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://service_db:5432/postgres
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
+        - SERVER_PORT=8080
+        - SPRING_DATASOURCE_URL=jdbc:postgresql://127.0.0.1:5432/my_pgdb
+        - SPRING_DATASOURCE_USERNAME=postgres
+        - SPRING_DATASOURCE_PASSWORD=postgres
+        - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+        - SPRING_THYMELEAF_CHECK-TEMPLATE_LOCATION=false
 
-  service-db:
-    container_name: service_db
-    image: postgres:14.7
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
-    ports:
-      - "5555:5432"
-    restart: unless-stopped
 
-  pgadmin:
-    container_name: pgadmin4_container
-    image: dpage/pgadmin4:7
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
-    ports:
-      - "5050:80"
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
 
-volumes:
-  db-data:
-  pgadmin-data:
+#  service-db:
+#    container_name: service_db
+#    image: postgres
+#    environment:
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: postgres
+#      POSTGRES_DB: postgres
+#    ports:
+#      - "5555:5432"
+
+#    restart: unless-stopped
+
+#  pgadmin:
+#    container_name: pgadmin4_container
+#    image: dpage/pgadmin4:7
+#    restart: always
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+#      PGADMIN_DEFAULT_PASSWORD: root
+#    ports:
+#      - "5050:80"
+#    volumes:
+#      - pgadmin-data:/var/lib/pgadmin
+#
+#volumes:
+#  db-data:
+#  pgadmin-data:
 
 

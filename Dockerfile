@@ -2,10 +2,12 @@ FROM openjdk:21
 
 LABEL authors="alexey"
 
-WORKDIR /opt
+ADD . /src
 
-COPY out/artifacts/petproject_jar/petproject.jar app.jar
+WORKDIR /src
 
-EXPOSE 8080
+RUN ./mvnw package -DskipTests
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+EXPOSE 8081
+
+ENTRYPOINT ["java", "-jar", "target/petproject-0.0.1-SNAPSHOT.jar"]

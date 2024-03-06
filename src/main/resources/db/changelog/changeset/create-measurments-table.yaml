@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-measurments
+      author: Aleksey
+      changes:
+        - createTable:
+            tableName: measurments
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: person
+                  type: bigint
+                  constraints:
+                    foreignKeyName: person
+                    referencedTableName: person
+                    referencedColumnNames: id
+              - column:
+                  name: height
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: weight
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: waist
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: breast
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: biceps
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: data
+                  type: date
+                  constraints:
+                    nullable: false

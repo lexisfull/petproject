@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-eating
+      author: Aleksey
+      changes:
+        - createTable:
+            tableName: eating
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: person
+                  type: bigint
+                  constraints:
+                    foreignKeyName: person
+                    referencedTableName: person
+                    referencedColumnNames: id
+              - column:
+                  name: mealTime
+                  type: varchar(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: reasonEating
+                  type: varchar(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: withWom
+                  type: varchar(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: dateTime
+                  type: date
+                  constraints:
+                    nullable: false

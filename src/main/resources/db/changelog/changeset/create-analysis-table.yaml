@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-analysis
+      author: Aleksey
+      changes:
+        - createTable:
+            tableName: analysis
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: person_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: person
+                    referencedTableName: person
+                    referencedColumnNames: id
+              - column:
+                  name: resultAnalyses
+                  type: varchar(200)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: subscribedOn
+                  type: date
+

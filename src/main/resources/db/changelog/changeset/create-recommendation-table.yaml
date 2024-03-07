@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-recommendation
+      author: Aleksey
+      changes:
+        - createTable:
+            tableName: recommendation
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: person
+                  type: bigint
+                  constraints:
+                    foreignKeyName: person
+                    referencedTableName: person
+                    referencedColumnNames: id
+                    nullable: false
+              - column:
+                  name: executor
+                  type: bigint
+                  constraints:
+                    foreignKeyName: executor
+                    referencedTableName: executor
+                    referencedColumnNames: id
+                    nullable: false
+              - column:
+                  name: recommendation
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: dateRecommendation
+                  type: date
+                  constraints:
+                    nullable: false

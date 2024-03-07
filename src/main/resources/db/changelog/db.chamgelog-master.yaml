@@ -1,3 +1,15 @@
 databaseChangeLog:
   - include: 
       file: db/changelog/changeset/create-person-table.yaml
+  - include:
+      file: db/changelog/changeset/create-analysis-table.yaml
+  - include:
+      file: db/changelog/changeset/create-eating-table.yaml
+  - include:
+      file: db/changelog/changeset/create-executor-table.yaml
+  - include:
+      file: db/changelog/changeset/create-measurments-table.yaml
+  - include:
+      file: db/changelog/changeset/create-product-table.yaml
+  - include:
+      file: db/changelog/changeset/create-recommendation-table.yaml

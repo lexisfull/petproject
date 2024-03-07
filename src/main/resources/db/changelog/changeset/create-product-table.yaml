@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-product
+      author: Aleksey
+      changes:
+        - createTable:
+            tableName: product
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: protein
+                  type: decimal
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fat
+                  type: decimal
+                  constraints:
+                    nullable: false
+              - column:
+                  name: carbohydrates
+                  type: decimal
+                  constraints:
+                    nullable: false
+              - column:
+                  name: kcal
+                  type: decimal
+                  constraints:
+                    nullable: false

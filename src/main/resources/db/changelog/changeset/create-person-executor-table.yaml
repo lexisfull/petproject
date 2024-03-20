@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-person_executor
+      author: Aleksey
+      changes:
+        - createTable:
+            tableName: person_executor
+            columns:
+              - column:
+                  name: executor
+                  type: bigint
+                  constraints:
+                    foreignKeyName: executor
+                    referencedTableName: executor
+                    referencedColumnNames: id
+              - column:
+                  name: person
+                  type: bigint
+                  constraints:
+                    foreignKeyName: person
+                    referencedTableName: person
+                    referencedColumnNames: id

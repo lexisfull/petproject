@@ -21,22 +21,22 @@ databaseChangeLog:
                     referencedTableName: person
                     referencedColumnNames: id
               - column:
-                  name: mealTime
+                  name: meal_time
                   type: varchar(50)
                   constraints:
                     nullable: true
               - column:
-                  name: reasonEating
+                  name: reason_eating
                   type: varchar(50)
                   constraints:
                     nullable: true
               - column:
-                  name: withWom
+                  name: with_wom
                   type: varchar(50)
                   constraints:
                     nullable: true
               - column:
-                  name: dateTime
+                  name: date_time
                   type: date
                   constraints:
                     nullable: false

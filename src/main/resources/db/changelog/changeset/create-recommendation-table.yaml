@@ -35,7 +35,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: dateRecommendation
+                  name: date_recommendation
                   type: date
                   constraints:
                     nullable: false

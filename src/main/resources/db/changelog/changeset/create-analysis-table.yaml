@@ -21,11 +21,11 @@ databaseChangeLog:
                     referencedTableName: person
                     referencedColumnNames: id
               - column:
-                  name: resultAnalyses
+                  name: result
                   type: varchar(200)
                   constraints:
                     nullable: true
               - column:
-                  name: subscribedOn
+                  name: subscribed_on
                   type: date
 

@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-eat_product-table
+      author: Aleksey
+      changes:
+        - createTable:
+            tableName: eat_product
+            columns:
+              - column:
+                  name: eat
+                  type: bigint
+                  constraints:
+                    foreignKeyName: eat
+                    referencedTableName: eating
+                    referencedColumnNames: id
+              - column:
+                  name: product
+                  type: bigint
+                  constraints:
+                    foreignKeyName: product
+                    referencedTableName: product
+                    referencedColumnNames: id

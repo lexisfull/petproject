@@ -13,3 +13,7 @@ databaseChangeLog:
       file: db/changelog/changeset/create-product-table.yaml
   - include:
       file: db/changelog/changeset/create-recommendation-table.yaml
+  - include:
+      file: db/changelog/changeset/create-person-executor-table.yaml
+  - include:
+      file: db/changelog/changeset/create-eat_product-table.yaml

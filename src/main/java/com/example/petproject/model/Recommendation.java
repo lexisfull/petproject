@@ -21,7 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Recomendation")
+@Table(name = "Recommendation")
 @Builder
 @Getter
 @Setter
@@ -46,7 +46,7 @@ public class Recommendation {
     @Column(name = "recommendation")
     String recommendation;
 
-    @Column(name = "dateRecommedation")
+    @Column(name = "dateRecommendation")
     Date dateRecommendation;
 
 }

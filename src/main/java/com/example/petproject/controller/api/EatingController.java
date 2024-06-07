@@ -1,9 +1,8 @@
 package com.example.petproject.controller.api;
 
-import com.example.petproject.controller.EatingController;
+import com.example.petproject.controller.EatingApi;
 import com.example.petproject.dto.EatingDTO;
 import com.example.petproject.service.EatingService;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "Приемы пищи", description = "методы для приема пищи")
-public class EatingAPI implements EatingController {
+public class EatingController implements EatingApi {
 
     private final EatingService eatingService;
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-public interface MeasurmentsController {
+public interface MeasurmentsAPI {
 
     @PostMapping
     @Operation(summary = "добавляет замеры по идентификатору пользователя")

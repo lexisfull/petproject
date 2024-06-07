@@ -1,6 +1,5 @@
 package com.example.petproject.controller.api;
 
-import com.example.petproject.controller.MeasurmentsController;
 import com.example.petproject.dto.MeasurmentsDTO;
 import com.example.petproject.service.MeasurmentsService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -14,7 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "для работы с замерами пользователя")
-public class MeasurmentsAPI implements MeasurmentsController {
+public class MeasurmentsController implements com.example.petproject.controller.MeasurmentsAPI {
 
     private final MeasurmentsService measurmentsService;
 

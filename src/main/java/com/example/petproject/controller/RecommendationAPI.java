@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @RequestMapping("/recommendation")
-public interface RecommendationController {
+public interface RecommendationAPI {
 
     @PostMapping
     @Operation(summary = "добавляет рекомендацию")

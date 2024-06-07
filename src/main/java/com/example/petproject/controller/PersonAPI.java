@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @RequestMapping("/persons")
-public interface PersonController {
+public interface PersonAPI {
 
     @GetMapping
     @Operation(summary = "Возвращает список пользователей")

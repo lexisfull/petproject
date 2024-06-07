@@ -1,15 +1,12 @@
 package com.example.petproject.controller.api;
 
-import com.example.petproject.controller.ExecutorController;
 import com.example.petproject.dto.ExecutorDTO;
 import com.example.petproject.service.ExecutorService;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Tag(name = "Исполнители", description = "методы работы с исполнителями")
-public class ExecutorAPI implements ExecutorController {
+public class ExecutorController implements com.example.petproject.controller.ExecutorAPI {
 
     final ExecutorService executorService;
 

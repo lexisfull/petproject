@@ -34,7 +34,7 @@ public class Person {
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     List<Measurments> measurmentsList;
 
-    @ManyToMany(mappedBy = "persons")
+    @ManyToMany(mappedBy = "persons", fetch = FetchType.LAZY)
     List<Executor> executorList;
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)

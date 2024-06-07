@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @RequestMapping("/eating")
-public interface EatingController {
+public interface EatingApi {
 
     @PostMapping
     @Operation(summary = "Добавляет прием пищи")

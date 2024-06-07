@@ -1,6 +1,6 @@
 package com.example.petproject.controller.api;
 
-import com.example.petproject.controller.AnalysisController;
+import com.example.petproject.controller.AnalysisAPI;
 import com.example.petproject.dto.AnalysisDTO;
 import com.example.petproject.service.AnalysisService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "анализы", description = "методы для работы с анализами")
-public class AnalysisAPI implements AnalysisController {
+public class AnalysisController implements AnalysisAPI {
 
     private final AnalysisService analysisService;
 

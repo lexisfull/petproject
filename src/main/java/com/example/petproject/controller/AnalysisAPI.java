@@ -13,21 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @RequestMapping("/analysis")
-public interface AnalysisController {
+public interface AnalysisAPI {
 
     @GetMapping
     @Operation(summary = "Возвращает список всех анализов")
-    public ResponseEntity<List<AnalysisDTO>> getAllAnalysis();
+    ResponseEntity<List<AnalysisDTO>> getAllAnalysis();
 
     @GetMapping("/{personId}")
     @Operation(summary = "Возвращает анализы пользователя по идентификатору")
-    public ResponseEntity<List<AnalysisDTO>> getAnalysisPerson(@PathVariable Long personId);
+    ResponseEntity<List<AnalysisDTO>> getAnalysisPerson(@PathVariable Long personId);
 
     @PostMapping
     @Operation(summary = "Добавляет анализы клиента")
-    public ResponseEntity<?> addAnalysis(@RequestBody AnalysisDTO analysisDTO);
+    ResponseEntity<?> addAnalysis(@RequestBody AnalysisDTO analysisDTO);
 
     @DeleteMapping("/{id}")
     @Operation(summary = "удаляет анализы пользователя по идентификатору")
-    public ResponseEntity<?> deleteAnalysis(@PathVariable Long id);
+    ResponseEntity<?> deleteAnalysis(@PathVariable Long id);
 }

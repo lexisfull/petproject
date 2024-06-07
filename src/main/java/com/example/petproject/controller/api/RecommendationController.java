@@ -1,10 +1,8 @@
 package com.example.petproject.controller.api;
 
-import com.example.petproject.controller.RecommendationController;
 import com.example.petproject.dto.RecommendationDTO;
 import com.example.petproject.model.Recommendation;
 import com.example.petproject.service.RecommendationService;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,7 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "рекоммендации", description = "методы для работы с рекоммендациями")
-public class RecommendationAPI implements RecommendationController {
+public class RecommendationController implements com.example.petproject.controller.RecommendationAPI {
 
     private final RecommendationService recommendationService;
 

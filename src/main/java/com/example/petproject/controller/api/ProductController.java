@@ -1,10 +1,8 @@
 package com.example.petproject.controller.api;
 
-import com.example.petproject.controller.ProductController;
 import com.example.petproject.dto.ProductDTO;
 import com.example.petproject.model.Product;
 import com.example.petproject.service.ProductService;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,7 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "Продукты", description = "методы для работы с продуктами")
-public class ProductAPI implements ProductController {
+public class ProductController implements com.example.petproject.controller.ProductAPI {
 
     private final ProductService productService;
 

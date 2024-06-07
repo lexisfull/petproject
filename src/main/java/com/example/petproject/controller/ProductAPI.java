@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @RequestMapping("/products")
-public interface ProductController {
+public interface ProductAPI {
 
     @PostMapping
     @Operation(summary = "добавляет продукт")

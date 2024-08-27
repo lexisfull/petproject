@@ -2,3 +2,5 @@
 Затем необходимо запустить docker-compose.  
 Все, проект запущен и работает.  
 Проект покрыт тестами.  
+Подключены liquibase.  
+MapStruct, Prometheus, Graphana

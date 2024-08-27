@@ -10,25 +10,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@RequestMapping("/persons")
-public interface PersonController {
+@RequestMapping("/users")
+public interface PersonAPI {
 
-    @GetMapping
+    @GetMapping("/partner/all")
     @Operation(summary = "Возвращает список пользователей")
     ResponseEntity<List<PersonDTO>> getPearson();
 
-    @GetMapping("/{id}")
+    @GetMapping("/partner/id")
     @Operation(summary = "Возвращает пользователя по идентификатору")
-    ResponseEntity<PersonDTO> getPersonById(@Parameter(description = "id пользователя") @PathVariable("id") Long id);
+    ResponseEntity<PersonDTO> getPersonById(@Parameter(description = "id пользователя")
+                                            @RequestHeader Long id);
 
-    @GetMapping("person/{name}")
+    @GetMapping("/partner/name")
     @Operation(summary = "Возвращает пользователя по имени")
     ResponseEntity<PersonDTO> getPersonByName(@Parameter(description = "имя пользователя")
-                                                     @PathVariable String name);
+                                                     @RequestHeader(required = true) String name);
 
     @PostMapping
     @Operation(summary = "Добавляет пользователя")

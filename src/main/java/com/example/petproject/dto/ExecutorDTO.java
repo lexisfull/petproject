@@ -29,7 +29,6 @@ public class ExecutorDTO {
 
     Type type;
 
-
     List<PersonDTO> personDTOList;
 
 }

@@ -1,13 +1,14 @@
 package com.example.petproject.service.impl;
 
+import com.example.petproject.container.TestContainer;
 import com.example.petproject.dao.PersonRepository;
-import com.example.petproject.factory.TestObjectFactory;
 import com.example.petproject.mapper.PersonMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.Optional;
 
@@ -23,7 +24,8 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class PersonServiceImplTest {
+@Testcontainers
+class PersonServiceImplTest extends TestContainer {
 
     @Mock
     private PersonRepository personRepository;

@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 public class PersonServiceImpl implements PersonService {
 
     private final PersonRepository personRepository;
-
     private final PersonMapper personMapper;
 
     public List<PersonDTO> getPersons() {

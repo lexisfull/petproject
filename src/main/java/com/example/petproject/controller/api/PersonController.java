@@ -9,10 +9,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -20,7 +23,7 @@ import java.util.List;
  * Рестконтроллер на который будет обращаться клиент
  */
 @Slf4j
-@RequestMapping("/persons")
+@RequestMapping("/users")
 @RestController
 @Tag(name = "Пользователи", description = "Методы для работы с пользователями")
 @RequiredArgsConstructor
@@ -38,13 +41,12 @@ public class PersonController implements com.example.petproject.controller.Perso
 
     @Override
     public ResponseEntity<PersonDTO> getPersonById(@Parameter(description = "id пользователя")
-                                                       @PathVariable("id") Long id) {
+                                                       @RequestHeader Long id) {
         PersonDTO person;
         try {
             person = personService.getPersonById(id);
         } catch (Exception e) {
-            log.error("error get by id = {}, exception = {}", id, e.getMessage(), e);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
@@ -52,13 +54,12 @@ public class PersonController implements com.example.petproject.controller.Perso
 
     @Override
     public ResponseEntity<PersonDTO> getPersonByName(@Parameter(description = "имя пользователя")
-                                                         @PathVariable String name) {
+                                                         @RequestHeader String name) {
         PersonDTO personDTO;
         try {
             personDTO = personService.getPersonByName(name);
         } catch (Exception e) {
-            log.error("error get by id = {}, exception = {}", name, e.getMessage(), e);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
         return new ResponseEntity<>(personDTO, HttpStatus.OK);
     }

@@ -22,10 +22,10 @@ public interface PersonAPI {
     @Operation(summary = "Возвращает список пользователей")
     ResponseEntity<List<PersonDTO>> getPearson();
 
-    @GetMapping("/partner/id")
+    @GetMapping("/partner/{id}")
     @Operation(summary = "Возвращает пользователя по идентификатору")
     ResponseEntity<PersonDTO> getPersonById(@Parameter(description = "id пользователя")
-                                            @RequestHeader Long id);
+                                            @PathVariable("id") Long id);
 
     @GetMapping("/partner/name")
     @Operation(summary = "Возвращает пользователя по имени")
